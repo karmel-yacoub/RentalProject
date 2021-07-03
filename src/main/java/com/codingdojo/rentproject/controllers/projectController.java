@@ -12,16 +12,19 @@ public String home() {
 
 
 
+
 @RequestMapping("/single")
 public String single() {
 	return "single.jsp";
 }
 
 
+
 @RequestMapping("/prop")
 public String prop() {
 	return "properties.jsp";
 }
+
 
 
 
@@ -37,6 +40,5 @@ public String agentsGrid() {
 public String agentsone() {
 	return "agents_single.jsp";
 }
-
 
 }
