@@ -105,7 +105,7 @@
                 <h2 class="title-a">Best Agents</h2>
               </div>
               <div class="title-link">
-                <a href="agents-grid.html">All Agents
+                <a href="/agentsGrid">All Agents
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
               </div>
