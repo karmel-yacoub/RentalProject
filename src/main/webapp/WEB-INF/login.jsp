@@ -150,7 +150,7 @@ a.socialIcon:hover,
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form onsubmit="event.preventDefault()" class="box">
+                <form  class="box">
                     <h1>Login</h1>
                     <p class="text-muted"> Please enter your login and password!</p>
                      <input type="text" name="" placeholder="Username">

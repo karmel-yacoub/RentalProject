@@ -1,16 +1,15 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <style>body {
-    margin: 0;
+
     padding: 0;
     font-family: sans-serif;
     background: linear-gradient(to right, #2eca6a, #ffffff)
 }
 
-.card {
-    margin-bottom: 20px;
-    border: none
-}
+
 
 .box {
     width: 500px;
@@ -24,13 +23,11 @@
     transition: 0.25s;
     margin-top: 100px
 }
-.box input[type="email"],
-.box input[type="text"],
-.box input[type="password"] {
+input {
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
+    margin: 20px auto !important;
     text-align: center;
     border: 2px solid #3498db;
     padding: 10px 10px;
@@ -47,13 +44,12 @@
     font-weight: 500
 }
 
-.box input[type="text"]:focus,
-.box input[type="password"]:focus {
+input:focus {
     width: 300px;
     border-color: #2ecc71
 }
 
-.box input[type="submit"] {
+.submit {
     border: 0;
     background: none;
     display: block;
@@ -68,7 +64,7 @@
     cursor: pointer
 }
 
-.box input[type="submit"]:hover {
+.submit:hover {
     background: #2ecc71
 }
 
@@ -149,21 +145,28 @@ a.socialIcon:hover,
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
-                <form onsubmit="event.preventDefault()" class="box">
-                    <h1>Login</h1>
-                     <input type="text" name="" placeholder="Username">
-                     <input type="email" name="" placeholder="Email">
-                      <input type="password" name="" placeholder="Password"> 
-                      <input type="password" name="" placeholder="PasswordConfirmation"> 
-                      <input type="text" name="" placeholder="phonenumber">
-                 	  
-                       <input type="submit" name="" value="Login" href="#">
-                       
+            
+                <p><form:errors path="user.*"/></p>
+                <form:form method="POST" action="/registration" modelAttribute="user" class="box">
+                    <h1>Register</h1>
+                
+                     <form:input type="text" path="username" placeholder="username" />
+                     <form:input type="email" path="email" placeholder="email" />
+                      <form:input type="password" path="password" placeholder="password" /> 
+                      <form:input type="password" path="passwordConfirmation" placeholder="passwordconfirmation" /> 
+                      <form:input type="text" path="phonenumber" placeholder="phonenumber" />
+                     <form:select class="form-control" path="role" >
+				        <c:forEach items="${x }" var="g">
+						  <option value="${g.getId() }"><c:out value="${g.role }"></c:out></option>
+						  </c:forEach>
+				        </form:select>
+                 	  <a href="/login">Already have an account , Log in</a>
+                      
+                       <input class="submit"type="submit" value="Register!"/>
                     <div class="col-md-12">
                        
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>
