@@ -9,4 +9,9 @@ public class projectController {
 public String home() {
 	return "home.jsp";
 }
+
+@RequestMapping("/")
+public String single() {
+	return "single.jsp";
+}
 }
