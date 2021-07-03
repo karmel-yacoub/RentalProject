@@ -1,4 +1,4 @@
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<main id="main">
 		<!-- =======Intro Single ======= -->
 		<section class="intro-single">
@@ -390,4 +390,4 @@
 
 	</main>
 	<!-- End #main -->
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
