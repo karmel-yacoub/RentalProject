@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,11 +14,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.sun.istack.NotNull;
-
+@Entity
+@Table(name = "apartments")
 public class Apartment {
 	@Id
 	@GeneratedValue
@@ -28,9 +31,6 @@ public class Apartment {
 	private String address;
 	@NotNull
 	private Double price;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="role_id")
-	private Role role;
 	@NotNull
 	private int bedroomnum;
 	@NotNull
@@ -52,7 +52,14 @@ public class Apartment {
 	        inverseJoinColumns = @JoinColumn(name = "user_id")
 	    )
 	private List<User> ratings;
-	private List<Integer> rating;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+	        name = "rates_app", 
+	        joinColumns = @JoinColumn(name = "apartment_id"), 
+	        inverseJoinColumns = @JoinColumn(name = "rate_id")
+	    )
+	private List<Rate> rated_apps;
+
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
@@ -101,13 +108,7 @@ public class Apartment {
 		this.price = price;
 	}
 
-	public Role getRole() {
-		return role;
-	}
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
 
 	public int getBedroomnum() {
 		return bedroomnum;
@@ -149,12 +150,14 @@ public class Apartment {
 		this.ratings = ratings;
 	}
 
-	public List<Integer> getRating() {
-		return rating;
+
+
+	public List<Rate> getRated_apps() {
+		return rated_apps;
 	}
 
-	public void setRating(List<Integer> rating) {
-		this.rating = rating;
+	public void setRated_apps(List<Rate> rated_apps) {
+		this.rated_apps = rated_apps;
 	}
 
 	public Date getCreatedAt() {

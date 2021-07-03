@@ -64,13 +64,21 @@ public class User {
 	        inverseJoinColumns = @JoinColumn(name = "apartment_id")
 	    )
 	private List<Apartment> rentedapartments;
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+	        name = "user_app_ratings", 
+	        joinColumns = @JoinColumn(name = "user_id"), 
+	        inverseJoinColumns = @JoinColumn(name = "apartment_id")
+	    )
+	private List<Apartment> ratedappartments;
+	
+//	public Role getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
 
 	public List<Apartment> getHostedapartments() {
 		return hostedapartments;
@@ -96,13 +104,6 @@ public class User {
 		this.ratedappartments = ratedappartments;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-	        name = "user_app_ratings", 
-	        joinColumns = @JoinColumn(name = "user_id"), 
-	        inverseJoinColumns = @JoinColumn(name = "apartment_id")
-	    )
-	private List<Apartment> ratedappartments;
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
