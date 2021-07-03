@@ -9,4 +9,11 @@ public class projectController {
 public String home() {
 	return "home.jsp";
 }
+
+@RequestMapping("/")
+public String prop() {
+	return "properties.jsp";
+}
+
+
 }
