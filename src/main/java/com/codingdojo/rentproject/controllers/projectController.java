@@ -9,6 +9,7 @@ public class projectController {
 public String home() {
 	return "home.jsp";
 }
+<<<<<<< HEAD
 
 @RequestMapping("/")
 public String prop() {
@@ -16,4 +17,10 @@ public String prop() {
 }
 
 
+=======
+@RequestMapping("/agentsGrid")
+public String agentsGrid() {
+	return "agents-grid.jsp";
+}
+>>>>>>> 62a557ccc1188ca6bd9664e9ef3fc555a3cbed32
 }
