@@ -13,4 +13,9 @@ public String home() {
 public String agentsGrid() {
 	return "agents-grid.jsp";
 }
+
+@RequestMapping("/agentsGridone")
+public String agentsone() {
+	return "agents_single.jsp";
+}
 }
