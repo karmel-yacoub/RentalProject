@@ -37,11 +37,6 @@ public class User {
 	@NotNull
 	private String username;
 	@NotNull
-	@NotBlank(message = "• First Name field must not be blank")
-	private String firstname;
-	@NotNull
-	private String lastname;
-	@NotNull
 	@Email(message = " • Email is in an invalid format. proper format: name@host.com")
 	private String email;
 	@NotNull
@@ -140,22 +135,6 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
 	}
 
 	public String getEmail() {

@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class projectController {
+@RequestMapping("/login")
+public String login() {
+	return "login.jsp";
+}
 @RequestMapping("/")
 public String home() {
 	return "home.jsp";
@@ -44,6 +48,10 @@ public String agentsone() {
 @RequestMapping("/contact")
 public String contact() {
 	return "contact.jsp";
+}
+@RequestMapping("/signup")
+public String Register() {
+	return "signup.jsp";
 }
 
 }
