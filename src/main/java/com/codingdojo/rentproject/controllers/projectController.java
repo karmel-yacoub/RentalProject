@@ -41,4 +41,9 @@ public String agentsone() {
 	return "agents_single.jsp";
 }
 
+@RequestMapping("/contact")
+public String contact() {
+	return "contact.jsp";
+}
+
 }

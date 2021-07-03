@@ -145,13 +145,13 @@
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Home</a>
+            <a class="nav-link active" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="property-grid.html">Property</a>
+            <a class="nav-link" href="/prop">Property</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="agents-grid.html">Agents</a>
+            <a class="nav-link" href="/agentsGrid">Agents</a>
           </li>
           
    
