@@ -9,4 +9,8 @@ public class projectController {
 public String home() {
 	return "home.jsp";
 }
+@RequestMapping("/agentsGrid")
+public String agentsGrid() {
+	return "agents-grid.jsp";
+}
 }
