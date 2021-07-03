@@ -1,4 +1,4 @@
-	<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<main id="main">
 		<!-- =======Intro Single ======= -->
 		<section class="intro-single">
@@ -32,7 +32,7 @@
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
-								<img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
+								<img src="img/agent-4.jpg" alt="" class="img-d img-fluid">
 							</div>
 							<div class="card-overlay card-overlay-hover">
 								<div class="card-header-d">
@@ -88,7 +88,7 @@
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
-								<img src="assets/img/agent-2.jpg" alt="" class="img-d img-fluid">
+								<img src="img/agent-2.jpg" alt="" class="img-d img-fluid">
 							</div>
 							<div class="card-overlay card-overlay-hover">
 								<div class="card-header-d">
@@ -144,7 +144,7 @@
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
-								<img src="assets/img/agent-3.jpg" alt="" class="img-d img-fluid">
+								<img src="img/agent-3.jpg" alt="" class="img-d img-fluid">
 							</div>
 							<div class="card-overlay card-overlay-hover">
 								<div class="card-header-d">
@@ -200,7 +200,7 @@
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
-								<img src="assets/img/agent-5.jpg" alt="" class="img-d img-fluid">
+								<img src="img/agent-5.jpg" alt="" class="img-d img-fluid">
 							</div>
 							<div class="card-overlay card-overlay-hover">
 								<div class="card-header-d">
@@ -256,7 +256,7 @@
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
-								<img src="assets/img/agent-1.jpg" alt="" class="img-d img-fluid">
+								<img src="img/agent-1.jpg" alt="" class="img-d img-fluid">
 							</div>
 							<div class="card-overlay card-overlay-hover">
 								<div class="card-header-d">
@@ -312,7 +312,7 @@
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
-								<img src="assets/img/agent-6.jpg" alt="" class="img-d img-fluid">
+								<img src="img/agent-6.jpg" alt="" class="img-d img-fluid">
 							</div>
 							<div class="card-overlay card-overlay-hover">
 								<div class="card-header-d">
@@ -390,4 +390,4 @@
 
 	</main>
 	<!-- End #main -->
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
