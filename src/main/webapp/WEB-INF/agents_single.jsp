@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">Margaret Stone</h1>
+              <h1 class="title-single"><c:out value="${Agent.firstname}"/> <c:out value="${Agent.lastname}"/></h1>
               <span class="color-text-a">Agent Immobiliari</span>
             </div>
           </div>
@@ -15,13 +15,13 @@
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a href="#">Agents</a>
+                  <a href="/agentsGrid">Agents</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Margaret Stone
+                  <c:out value="${Agent.firstname}"/> <c:out value="${Agent.lastname}"/>
                 </li>
               </ol>
             </nav>
@@ -45,7 +45,7 @@
                 <div class="agent-info-box">
                   <div class="agent-title">
                     <div class="title-box-d">
-                      <h3 class="title-d">Margaret Stone
+                      <h3 class="title-d"><c:out value="${Agent.firstname}"/> <c:out value="${Agent.lastname}"/>
                         <br> Escala
                       </h3>
                     </div>
@@ -59,15 +59,15 @@
                     <div class="info-agents color-a">
                       <p>
                         <strong>Phone: </strong>
-                        <span class="color-text-a"> +54 356 945234 </span>
+                        <span class="color-text-a"> <c:out value="${Agent.phonenumber}"/> </span>
                       </p>
                       <p>
                         <strong>Mobile: </strong>
-                        <span class="color-text-a"> 999 123 456 789</span>
+                        <span class="color-text-a"> <c:out value="${Agent.phonenumber}"/></span>
                       </p>
                       <p>
                         <strong>Email: </strong>
-                        <span class="color-text-a"> agents@example.com</span>
+                        <span class="color-text-a"> <c:out value="${Agent.email}"/></span>
                       </p>
                       <p>
                         <strong>skype: </strong>
@@ -75,7 +75,7 @@
                       </p>
                       <p>
                         <strong>Email: </strong>
-                        <span class="color-text-a"> agents@example.com</span>
+                        <span class="color-text-a"> <c:out value="${Agent.email}"/></span>
                       </p>
                     </div>
                   </div>
@@ -130,6 +130,55 @@
                 </form>
               </div>
             </div>
+            <c:forEach var="option" items="${Agent.hostedapartments}">
+				<div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="img/property-1.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">${option.address}
+                        <br /> ${option.name}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | $ ${option.price} </span>
+                    </div>
+                    <a href="property-single.html" class="link-a">Click here to view
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>${option.area}m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Bedrooms</h4>
+                        <span>${option.bedroomnum}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>${option.bathroomnum}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Garages</h4>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        	</c:forEach>
             <div class="col-md-4">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">

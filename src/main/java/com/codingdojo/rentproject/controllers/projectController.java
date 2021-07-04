@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,15 +40,17 @@ public class projectController {
 	
 	
 	
-	@RequestMapping("/single")
-	public String single() {
+	@RequestMapping("/single/{id}")
+	public String single(Model model, @PathVariable("id") Long id) {
+		model.addAttribute("apartment", ps.apartmentById(id));
 		return "single.jsp";
 	}
 	
 	
 	
 	@RequestMapping("/prop")
-	public String prop() {
+	public String prop(Model model) {
+		model.addAttribute("Options", ps.allApartments());
 		return "properties.jsp";
 	}
 	
@@ -56,14 +59,16 @@ public class projectController {
 	
 	
 	@RequestMapping("/agentsGrid")
-	public String agentsGrid() {
+	public String agentsGrid(Model model) {
+		model.addAttribute("Agents", ps.allAgents());
 		return "agents-grid.jsp";
 	}
 	
 	
 	
-	@RequestMapping("/agentsGridone")
-	public String agentsone() {
+	@RequestMapping("/agentsGridone/{id}")
+	public String agentsone(Model model , @PathVariable("id") Long id) {
+		model.addAttribute("Agent", ps.userById(id));
 		return "agents_single.jsp";
 	}
 	

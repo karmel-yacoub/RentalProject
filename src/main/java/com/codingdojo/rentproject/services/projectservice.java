@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
 import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.repositories.ApartmentRepository;
@@ -30,9 +31,26 @@ public List<Role> allRoles() {
 	
 	return RoleR.findAll();
 }
+<<<<<<< HEAD
 public User registerUser(@Valid User user) {
 	
      return UR.save(user);
 	
 }
+=======
+public List<Apartment> allApartments(){
+	return AR.findAll();
+	
+}
+public Apartment apartmentById(long id) {
+	return AR.findById(id).get();
+}
+public List<User> allAgents(){
+	return UR.findByRole("agent");
+}
+
+public User userById(long id) {
+	return UR.findById(id).get();
+}
+>>>>>>> 2f1d87ca0a06904db9f3f6a1c7ae3fc9a8f0e09e
 }

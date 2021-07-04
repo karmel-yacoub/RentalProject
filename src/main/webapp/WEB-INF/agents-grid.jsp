@@ -38,7 +38,7 @@
 								<div class="card-header-d">
 									<div class="card-title-d align-self-center">
 										<h3 class="title-d">
-											<a href="#" class="link-two">Margaret Sotillo <br>
+											<a href="/agentsGridone/${agent.id}" class="link-two">Margaret Sotillo <br>
 												Escala
 											</a>
 										</h3>
