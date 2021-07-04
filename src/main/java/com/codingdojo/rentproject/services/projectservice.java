@@ -79,9 +79,14 @@ public List<Apartment> allApartments(){
 public Apartment apartmentById(long id) {
 	return AR.findById(id).get();
 }
-public List<User> allAgents(){
-	return UR.findByRole("agent");
+public Role roleById(long id) {
+	return RoleR.findById(id).get();
 }
+public List<User> allAgents(){
+	Role x = roleById(3);
+	return UR.findByRole(x);
+}
+
 
 public User userById(long id) {
 	return UR.findById(id).get();
