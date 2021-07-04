@@ -91,5 +91,7 @@ public List<User> allAgents(){
 public User userById(long id) {
 	return UR.findById(id).get();
 }
-
+public void createapp(Apartment app) {
+	AR.save(app);
+}
 }

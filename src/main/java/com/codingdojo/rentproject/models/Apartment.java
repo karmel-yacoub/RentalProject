@@ -36,6 +36,9 @@ public class Apartment {
 	private int bedroomnum;
 	@NotNull
 	private int bathroomnum;
+	private String image;
+	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User host;
@@ -175,6 +178,13 @@ public class Apartment {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

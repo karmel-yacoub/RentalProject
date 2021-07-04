@@ -1,6 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page session="true" %>
 <html>
 <head>
 <style>body {
@@ -148,23 +147,19 @@ a.socialIcon:hover,
         <div class="col-md-6">
             
                 <p><form:errors path="user.*"/></p>
-                <form:form method="POST" action="/signup" modelAttribute="user" class="box" enctype="multipart/form-data">
+                <form:form method="POST" action="/addapp" modelAttribute="Apartment" class="box" enctype="multipart/form-data">
                     <h1>Register</h1>
-                
-                     <form:input type="text" path="username" placeholder="username" />
-                     <form:input type="email" path="email" placeholder="email" />
-                      <form:input type="password" path="password" placeholder="password" /> 
-                      <form:input type="password" path="passwordConfirmation" placeholder="passwordconfirmation" /> 
-                      <form:input type="text" path="phonenumber" placeholder="phonenumber" />
+                	 <form:input type="hidden" path="host" value="${user.getId() }"/>
+                     <form:input type="text" path="buildingName" placeholder="buildingName" />
+                     <form:input type="text" path="address" placeholder="address" />
+                      <form:input type="text" path="price" placeholder="price" /> 
+                      <form:input type="number" path="bedroomnum" placeholder="bedroomnum" /> 
+                      <form:input type="number" path="bathroomnum" placeholder="bathroomnum" />
                        <input type="file" name="Image" placeholder="image" >
-                     <form:select class="form-control" path="role" >
-				        <c:forEach items="${x }" var="g">
-						  <option value="${g.getId() }"><c:out value="${g.role }"></c:out></option>
-						  </c:forEach>
-				        </form:select>
-                 	  <a href="/login">Already have an account , Log in</a>
+                  
+  
                       
-                       <input class="submit"type="submit" value="Register!"/>
+                       <input class="submit"type="submit" value="Add Property"/>
                     <div class="col-md-12">
                        
                     </div>
