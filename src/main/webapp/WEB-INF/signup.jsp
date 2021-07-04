@@ -173,4 +173,4 @@ a.socialIcon:hover,
     </div>
 </div>
 </body>
-</html>>
+</html>
