@@ -1,6 +1,7 @@
 package com.codingdojo.rentproject.models;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -46,11 +47,12 @@ public class User {
 	@Transient
 	private String passwordConfirmation;
 	@NotNull
-	@Size(min=10)
-	private Double phonenumber;
+	@Size(min=9)
+	private String phonenumber;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="role_id")
 	private Role role;
+	private String image;
 	@OneToMany(mappedBy="host", fetch = FetchType.LAZY)
 	private List<Apartment> hostedapartments;
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -161,11 +163,11 @@ public class User {
 		this.passwordConfirmation = passwordConfirmation;
 	}
 
-	public Double getPhonenumber() {
+	public String getPhonenumber() {
 		return phonenumber;
 	}
 
-	public void setPhonenumber(Double phonenumber) {
+	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
 
@@ -191,6 +193,14 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
