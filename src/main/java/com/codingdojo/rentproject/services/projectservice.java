@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
+import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.repositories.ApartmentRepository;
 import com.codingdojo.rentproject.repositories.RateREpository;
 import com.codingdojo.rentproject.repositories.RoleRepository;
@@ -27,5 +29,19 @@ public projectservice(ApartmentRepository aR, RateREpository rateR, RoleReposito
 public List<Role> allRoles() {
 	
 	return RoleR.findAll();
+}
+public List<Apartment> allApartments(){
+	return AR.findAll();
+	
+}
+public Apartment apartmentById(long id) {
+	return AR.findById(id).get();
+}
+public List<User> allAgents(){
+	return UR.findByRole("agent");
+}
+
+public User userById(long id) {
+	return UR.findById(id).get();
 }
 }

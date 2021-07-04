@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.codingdojo.rentproject.models.Role;
@@ -30,15 +31,17 @@ public class projectController {
 	
 	
 	
-	@RequestMapping("/single")
-	public String single() {
+	@RequestMapping("/single/{id}")
+	public String single(Model model, @PathVariable("id") Long id) {
+		model.addAttribute("apartment", ps.apartmentById(id));
 		return "single.jsp";
 	}
 	
 	
 	
 	@RequestMapping("/prop")
-	public String prop() {
+	public String prop(Model model) {
+		model.addAttribute("Options", ps.allApartments());
 		return "properties.jsp";
 	}
 	
@@ -47,14 +50,16 @@ public class projectController {
 	
 	
 	@RequestMapping("/agentsGrid")
-	public String agentsGrid() {
+	public String agentsGrid(Model model) {
+		model.addAttribute("Agents", ps.allAgents());
 		return "agents-grid.jsp";
 	}
 	
 	
 	
-	@RequestMapping("/agentsGridone")
-	public String agentsone() {
+	@RequestMapping("/agentsGridone/{id}")
+	public String agentsone(Model model , @PathVariable("id") Long id) {
+		model.addAttribute("Agent", ps.userById(id));
 		return "agents_single.jsp";
 	}
 	
