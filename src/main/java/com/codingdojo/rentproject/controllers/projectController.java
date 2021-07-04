@@ -33,7 +33,10 @@ public class projectController {
 		return "login.jsp";
 	}
 	@RequestMapping("/")
-	public String home() {
+	public String home(HttpSession session,Model model) {
+		
+		User user=ps.findUserById((Long)session.getAttribute("user.id"));
+		model.addAttribute("user",user);
 		return "home.jsp";
 	}
 	
@@ -100,5 +103,18 @@ public class projectController {
 	    	else
 	    		return "redirect:/signup";
 	    }
-
+	 @RequestMapping(value="/login", method=RequestMethod.POST)
+	    public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) {
+	        // if the user is authenticated, save their user id in session
+	        // else, add error messages and return the login page
+	    	if(ps.authenticateUser(email, password)==true) {
+	    		User user=ps.findByEmail(email);
+	    		session.setAttribute("user.id", user.getId());
+	    		return "redirect:/";
+	    		
+	    	}
+	    	else {
+	    		return "redirect:/login";
+	    	}
+	    }
 }

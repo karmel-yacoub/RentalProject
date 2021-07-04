@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -156,10 +157,27 @@
 
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
+           </li>
+           <c:if test="${user.getRole().getId() eq 3 }">
+          <li class="nav-item">
+            <a class="nav-link" href="/addapp">Add Property</a>
           </li>
+          </c:if>
+           <c:choose>
+           <c:when test="${user eq null }">
+          
            <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
+          </c:when>
+          <c:otherwise>
+          
+           <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          </c:otherwise>
+          </c:choose>
+          
         </ul>
       </div>
       <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
