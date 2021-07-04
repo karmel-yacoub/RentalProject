@@ -130,7 +130,7 @@
                 </form>
               </div>
             </div>
-            <c:forEach var="option" items="${Agent.hostedapartments}">
+            <c:forEach var="option" items="${Agent.getHostedApartments()}">
 				<div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
