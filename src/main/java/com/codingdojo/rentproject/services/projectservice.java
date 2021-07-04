@@ -2,14 +2,16 @@ package com.codingdojo.rentproject.services;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.rentproject.models.Role;
+import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.repositories.ApartmentRepository;
 import com.codingdojo.rentproject.repositories.RateREpository;
 import com.codingdojo.rentproject.repositories.RoleRepository;
 import com.codingdojo.rentproject.repositories.UserRepository;
-
 
 
 @Service
@@ -27,5 +29,10 @@ public projectservice(ApartmentRepository aR, RateREpository rateR, RoleReposito
 public List<Role> allRoles() {
 	
 	return RoleR.findAll();
+}
+public User registerUser(@Valid User user) {
+	
+     return UR.save(user);
+	
 }
 }

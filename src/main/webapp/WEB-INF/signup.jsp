@@ -147,7 +147,7 @@ a.socialIcon:hover,
         <div class="col-md-6">
             
                 <p><form:errors path="user.*"/></p>
-                <form:form method="POST" action="/registration" modelAttribute="user" class="box">
+                <form:form method="POST" action="/signup" modelAttribute="user" class="box" enctype="multipart/form-data">
                     <h1>Register</h1>
                 
                      <form:input type="text" path="username" placeholder="username" />
@@ -155,6 +155,7 @@ a.socialIcon:hover,
                       <form:input type="password" path="password" placeholder="password" /> 
                       <form:input type="password" path="passwordConfirmation" placeholder="passwordconfirmation" /> 
                       <form:input type="text" path="phonenumber" placeholder="phonenumber" />
+                       <input type="file" name="Image" placeholder="image" >
                      <form:select class="form-control" path="role" >
 				        <c:forEach items="${x }" var="g">
 						  <option value="${g.getId() }"><c:out value="${g.role }"></c:out></option>
