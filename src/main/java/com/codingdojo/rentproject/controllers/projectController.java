@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.text.html.HTML;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -50,7 +49,7 @@ public class projectController {
 	
 	
 	@RequestMapping("/single/{id}")
-	public String single(Model model, @PathVariable("id") Long id) {
+	public String single(Model model, @PathVariable("id") Long id,HttpSession session) {
 		model.addAttribute("apartment", ps.apartmentById(id));
 		model.addAttribute("States", ps.allStates());
 		return "single.jsp";
@@ -59,7 +58,7 @@ public class projectController {
 	
 	
 	@RequestMapping("/prop")
-	public String prop(Model model) {
+	public String prop(Model model,HttpSession session) {
 		model.addAttribute("Options", ps.allApartments());
 		model.addAttribute("States", ps.allStates());
 		return "properties.jsp";
@@ -70,7 +69,7 @@ public class projectController {
 	
 	
 	@RequestMapping("/agentsGrid")
-	public String agentsGrid(Model model) {
+	public String agentsGrid(Model model,HttpSession session) {
 		model.addAttribute("Agents", ps.allAgents());
 		model.addAttribute("States", ps.allStates());
 		return "agents-grid.jsp";
@@ -79,14 +78,14 @@ public class projectController {
 	
 	
 	@RequestMapping("/agentsGridone/{id}")
-	public String agentsone(Model model , @PathVariable("id") Long id) {
+	public String agentsone(Model model , @PathVariable("id") Long id,HttpSession session) {
 		model.addAttribute("Agent", ps.userById(id));
 		model.addAttribute("States", ps.allStates());
 		return "agents_single.jsp";
 	}
 	
 	@RequestMapping("/contact")
-	public String contact() {
+	public String contact(HttpSession session,Model model) {
 		return "contact.jsp";
 	}
 	@RequestMapping("/signup")
@@ -109,6 +108,7 @@ public class projectController {
 	            String uploadDir = "user-photos/" + savedUser.getId();
 	            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	            session.setAttribute("user.id", user.getId());
+	            session.setAttribute("role", user.getRole().getId());
 	            return "redirect:/";
 	        	}
 	    	else
@@ -121,6 +121,7 @@ public class projectController {
 	    	if(ps.authenticateUser(email, password)==true) {
 	    		User user=ps.findByEmail(email);
 	    		session.setAttribute("user.id", user.getId());
+	    		session.setAttribute("role", user.getRole().getId());
 	    		return "redirect:/";
 	    		
 	    	}
@@ -148,8 +149,26 @@ public class projectController {
 		 
 	 }
 	 @RequestMapping(value="/logout")
-	 public String logout(HttpSession session) {
+	 public String logout(HttpSession session,Model model) {
 		  session.invalidate();
 		  return "redirect:/";
+	 }
+	 @RequestMapping("/admin")
+	 public String admin(HttpSession session,Model model) {
+		 Long id=(Long)session.getAttribute("user.id");
+			if (id == null ) {
+				return "redirect:/login";
+			}
+			User user=ps.findUserById(id);
+			if(user.getRole().getId() != 1) {
+				return "redirect:/";
+			}
+			
+			int x=ps.allAgents().size();
+			int y=ps.allApartments().size();
+			model.addAttribute("user",user);
+			model.addAttribute("x",x);
+			model.addAttribute("y",y);
+			return "adminHome.jsp";
 	 }
 }

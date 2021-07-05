@@ -28,7 +28,7 @@
       </div>
     </section><!-- End Intro Single-->
       <div style="margin-right:100px">
-            <img src="img/slide-1.jpg">
+            <img src="/img/slide-1.jpg">
             </div>
 <section class="property-single nav-arrow-b">
       <div class="container">
