@@ -15,7 +15,7 @@
 						<nav aria-label="breadcrumb"
 							class="breadcrumb-box d-flex justify-content-lg-end">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
 								<li class="breadcrumb-item active" aria-current="page">
 									Agents Grid</li>
 							</ol>
@@ -30,6 +30,65 @@
 		<section class="agents-grid grid">
 			<div class="container">
 				<div class="row">
+				<c:forEach var="Agent" items="${Agents}">
+					
+					<div class="col-md-4">
+                        <div class="card-box-d">
+                            <div class="card-img-d">
+                                <img src="img/agent-4.jpg" alt="" class="img-d img-fluid">
+                            </div>
+                            <div class="card-overlay card-overlay-hover">
+                                <div class="card-header-d">
+                                    <div class="card-title-d align-self-center">
+                                        <h3 class="title-d">
+                                            <a href="/agentsGridone/${agent.id}" class="link-two">Margaret Sotillo <br>
+                                                Escala
+                                            </a>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="card-body-d">
+                                    <p class="content-d color-text-a">Sed porttitor lectus
+                                        nibh, Cras ultricies ligula sed magna dictum porta two.</p>
+                                    <div class="info-agents color-a">
+                                        <p>
+                                            <strong>Phone: </strong> ${agent.phonenumber}
+                                        </p>
+                                        <p>
+                                            <strong>Email: </strong> ${agent.email}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-footer-d">
+                                    <div class="socials-footer d-flex justify-content-center">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#"
+                                                class="link-one"> <i class="fa fa-facebook"
+                                                    aria-hidden="true"></i>
+                                            </a></li>
+                                            <li class="list-inline-item"><a href="#"
+                                                class="link-one"> <i class="fa fa-twitter"
+                                                    aria-hidden="true"></i>
+                                            </a></li>
+                                            <li class="list-inline-item"><a href="#"
+                                                class="link-one"> <i class="fa fa-instagram"
+                                                    aria-hidden="true"></i>
+                                            </a></li>
+                                            <li class="list-inline-item"><a href="#"
+                                                class="link-one"> <i class="fa fa-pinterest-p"
+                                                    aria-hidden="true"></i>
+                                            </a></li>
+                                            <li class="list-inline-item"><a href="#"
+                                                class="link-one"> <i class="fa fa-dribbble"
+                                                    aria-hidden="true"></i>
+                                            </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        		</c:forEach>
 					<div class="col-md-4">
 						<div class="card-box-d">
 							<div class="card-img-d">
@@ -39,7 +98,7 @@
 								<div class="card-header-d">
 									<div class="card-title-d align-self-center">
 										<h3 class="title-d">
-											<a href="/agentsGridone/${agent.id}" class="link-two">Margaret Sotillo <br>
+											<a href="/agentsGridone/${agent.id}" class="link-two">${agent.username} <br>
 												Escala
 											</a>
 										</h3>
@@ -50,10 +109,10 @@
 										nibh, Cras ultricies ligula sed magna dictum porta two.</p>
 									<div class="info-agents color-a">
 										<p>
-											<strong>Phone: </strong> +54 356 945234
+											<strong>Phone: </strong> ${agent.phonenumber}
 										</p>
 										<p>
-											<strong>Email: </strong> agents@example.com
+											<strong>Email: </strong> ${agent.email}
 										</p>
 									</div>
 								</div>

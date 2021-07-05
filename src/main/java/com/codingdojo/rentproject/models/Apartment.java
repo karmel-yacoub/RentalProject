@@ -36,6 +36,8 @@ public class Apartment {
 	private int bedroomnum;
 	@NotNull
 	private int bathroomnum;
+	@NotNull
+	private String area;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User host;
@@ -60,6 +62,11 @@ public class Apartment {
 	        inverseJoinColumns = @JoinColumn(name = "rate_id")
 	    )
 	private List<Rate> rated_apps;
+	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="state_id")
+    private State state;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

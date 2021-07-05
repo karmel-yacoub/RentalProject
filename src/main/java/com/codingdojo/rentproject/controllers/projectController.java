@@ -37,6 +37,7 @@ public class projectController {
 		
 		User user=ps.findUserById((Long)session.getAttribute("user.id"));
 		model.addAttribute("user",user);
+		model.addAttribute("States", ps.allStates());
 		return "home.jsp";
 	}
 	
@@ -46,6 +47,7 @@ public class projectController {
 	@RequestMapping("/single/{id}")
 	public String single(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("apartment", ps.apartmentById(id));
+		model.addAttribute("States", ps.allStates());
 		return "single.jsp";
 	}
 	
@@ -54,6 +56,7 @@ public class projectController {
 	@RequestMapping("/prop")
 	public String prop(Model model) {
 		model.addAttribute("Options", ps.allApartments());
+		model.addAttribute("States", ps.allStates());
 		return "properties.jsp";
 	}
 	
@@ -64,6 +67,7 @@ public class projectController {
 	@RequestMapping("/agentsGrid")
 	public String agentsGrid(Model model) {
 		model.addAttribute("Agents", ps.allAgents());
+		model.addAttribute("States", ps.allStates());
 		return "agents-grid.jsp";
 	}
 	
@@ -72,6 +76,7 @@ public class projectController {
 	@RequestMapping("/agentsGridone/{id}")
 	public String agentsone(Model model , @PathVariable("id") Long id) {
 		model.addAttribute("Agent", ps.userById(id));
+		model.addAttribute("States", ps.allStates());
 		return "agents_single.jsp";
 	}
 	
@@ -85,6 +90,11 @@ public class projectController {
 		model.addAttribute("x",x);
 		return "signup.jsp";
 	}
+	@RequestMapping("/filter")
+		public String filter(Model model, @RequestParam("state")int state , @RequestParam("price")int price, @RequestParam("bedrooms")int bedrooms , @RequestParam("bathrooms")int bathrooms ) {
+			model.addAttribute("Properties", ps.allApartments());
+			return "properties.jsp";
+		}
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException {
 	        // if result has errors, return the registration page (don't worry about validations just now)

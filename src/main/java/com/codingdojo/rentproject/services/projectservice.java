@@ -5,13 +5,16 @@ import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
+import com.codingdojo.rentproject.models.State;
 import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.repositories.ApartmentRepository;
 import com.codingdojo.rentproject.repositories.RateREpository;
 import com.codingdojo.rentproject.repositories.RoleRepository;
+import com.codingdojo.rentproject.repositories.StateRepository;
 import com.codingdojo.rentproject.repositories.UserRepository;
 
 
@@ -21,11 +24,13 @@ private final ApartmentRepository AR;
 private final RateREpository RateR;
 private final RoleRepository RoleR;
 private final UserRepository UR;
-public projectservice(ApartmentRepository aR, RateREpository rateR, RoleRepository roleR, UserRepository uR) {
+private final StateRepository SR;
+public projectservice(ApartmentRepository aR, RateREpository rateR, RoleRepository roleR, UserRepository uR, StateRepository sR) {
 	AR = aR;
 	RateR = rateR;
 	RoleR = roleR;
 	UR = uR;
+	SR = sR;
 }
 public List<Role> allRoles() {
 	
@@ -91,5 +96,38 @@ public List<User> allAgents(){
 public User userById(long id) {
 	return UR.findById(id).get();
 }
+public List<State> allStates(){
+	return SR.findAll();
+}
+public List<Apartment> filteredApartments(int state, int price, int bedrooms , int bathrooms){
+	if (state != 0 && price == 0 && bedrooms == 0 && bathrooms == 0) {
+		return AR.state(state);}
+	else if (state == 0 && price != 0 && bedrooms == 0 && bathrooms == 0) {
+		return AR.price(0, price);}
+	else if (state == 0 && price == 0 && bedrooms != 0 && bathrooms == 0) {
+		return AR.bedrooms(bedrooms);}
+	else if (state == 0 && price == 0 && bedrooms == 0 && bathrooms != 0) {
+		return AR.bathrooms(bathrooms);}		
+	else if (state != 0 && price != 0 && bedrooms == 0 && bathrooms == 0) {
+	return AR.priceAndState(state,0, price);}
+	else if (state != 0 && price == 0 && bedrooms != 0 && bathrooms == 0) {
+		return AR.stateAndBedrooms(state, bedrooms);}
+	else if (state != 0 && price == 0 && bedrooms == 0 && bathrooms != 0) {
+		return AR.stateAndBathrooms(state, bathrooms);}
+	else if (state == 0 && price != 0 && bedrooms != 0 && bathrooms == 0) {
+		return AR.priceAndBedrooms(0, price, bedrooms);}
+	else if (state == 0 && price != 0 && bedrooms == 0 && bathrooms != 0) {
+		return AR.priceAndBathrooms(0, price, bathrooms);}
+	else if (state != 0 && price != 0 && bedrooms != 0 && bathrooms == 0) {
+		return AR.priceAndStateAndBedrooms(state,0, price, bedrooms);}
+	else if (state != 0 && price != 0 && bedrooms != 0 && bathrooms != 0) {
+		return AR.priceAndStateAndBedroomsAndbathrooms(state,0, price, bedrooms, bathrooms);}
+	else return allApartments();
+}
+public List<Apartment> filteredApartments2(int state, int price, int bedrooms , int bathrooms){
+	List<Apartment> x = allApartments();
+	
+}
+
 
 }
