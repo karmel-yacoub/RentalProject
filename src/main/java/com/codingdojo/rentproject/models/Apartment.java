@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,7 +39,12 @@ public class Apartment {
 	private int bathroomnum;
 	private String image;
 	
-
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (image == null || id == null) return null;
+	         
+	        return "/user-photos/" + id + "/" + image;
+	    }
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User host;

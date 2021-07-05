@@ -69,6 +69,12 @@ public class User {
 	        inverseJoinColumns = @JoinColumn(name = "apartment_id")
 	    )
 	private List<Apartment> ratedappartments;
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (image == null || id == null) return null;
+	         
+	        return "/user-photos/" + id + "/" + image;
+	    }
 	
 //	public Role getRole() {
 //		return role;
