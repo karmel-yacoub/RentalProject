@@ -11,21 +11,21 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/img/favicon.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="vendor/owl.carousel/owl.carousel.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/vendor/owl.carousel/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: EstateAgency - v2.2.1
@@ -166,13 +166,13 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
            </li>
-           <c:if test="${user.getRole().getId() eq 3 }">
+           <c:if test="${sessionScope.role eq 3}">
           <li class="nav-item">
             <a class="nav-link" href="/addapp">Add Property</a>
           </li>
           </c:if>
            <c:choose>
-           <c:when test="${user eq null }">
+           <c:when test="${sessionScope.role eq null}">
           
            <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>

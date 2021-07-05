@@ -157,6 +157,13 @@ a.socialIcon:hover,
                       <form:input type="number" path="bathroomnum" placeholder="Number of bathrooms" />
                       
                       
+                     <form:input type="text" path="buildingName" placeholder="buildingName" />
+                     <form:input type="text" path="address" placeholder="address" />
+                      <form:input type="text" path="price" placeholder="price" /> 
+                      <label style="color:white;" for="bedroomnum">Bedroom Number</label>
+                      <form:input type="number" path="bedroomnum" placeholder="bedroomnum" /> 
+                      <label style="color:white;" for="bedroomnum">Bathroom Number</label>
+                      <form:input type="number" path="bathroomnum" placeholder="bathroomnum" />
                        <input type="file" name="Image" placeholder="image" >
                   		<form:label path="state">State</form:label>
 				        <form:errors path="state"/>
@@ -166,7 +173,6 @@ a.socialIcon:hover,
         				</c:forEach>
 				        
 				       </form:select>
-  
                       
                        <input class="submit"type="submit" value="Add Property"/>
                     <div class="col-md-12">
