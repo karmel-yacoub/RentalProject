@@ -69,10 +69,9 @@
             <div class="form-group">
               <label for="city">State</label>
               <select name = "state" class="form-control form-control-lg form-control-a" id="city">
-                <option value ="all">All City</option>
+                <option value ="all">All States</option>
                 <c:forEach var="state" items="${States}">
-				<option value = "${state.id}">${state.name}</option>
-				
+				<option value = "${state.name}">${state.name}</option>
         		</c:forEach>
                 <option >Alabama</option>
                 <option>Arizona</option>
@@ -123,8 +122,8 @@
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option value = "all">Unlimite</option>
+              <select class="form-control form-control-lg form-control-a" id="price" name = "price">
+                <option value = "0">Unlimite</option>
                 <option value ="50000">$50,000</option>
                 <option value ="1000000">$100,000</option>
                 <option value ="1500000">$150,000</option>

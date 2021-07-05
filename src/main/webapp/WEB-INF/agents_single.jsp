@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single"><c:out value="${Agent.firstname}"/> <c:out value="${Agent.lastname}"/></h1>
+              <h1 class="title-single"><c:out value="${Agent.username}"/> </h1>
               <span class="color-text-a">Agent Immobiliari</span>
             </div>
           </div>
@@ -22,7 +22,7 @@
                   <a href="/agentsGrid">Agents</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  <c:out value="${Agent.firstname}"/> <c:out value="${Agent.lastname}"/>
+                  <c:out value="${Agent.username}"/> 
                 </li>
               </ol>
             </nav>
@@ -46,7 +46,7 @@
                 <div class="agent-info-box">
                   <div class="agent-title">
                     <div class="title-box-d">
-                      <h3 class="title-d"><c:out value="${Agent.firstname}"/> <c:out value="${Agent.lastname}"/>
+                      <h3 class="title-d"><c:out value="${Agent.username}"/> 
                         <br> Escala
                       </h3>
                     </div>
@@ -131,7 +131,7 @@
                 </form>
               </div>
             </div>
-            <c:forEach var="option" items="${Agent.getHostedApartments()}">
+            <c:forEach var="option" items="${Agent.getHostedapartments()}">
 				<div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">

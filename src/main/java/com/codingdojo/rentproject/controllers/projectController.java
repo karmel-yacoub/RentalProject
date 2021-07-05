@@ -96,8 +96,8 @@ public class projectController {
 		return "signup.jsp";
 	}
 	@RequestMapping("/filter")
-		public String filter(Model model, @RequestParam("state")int state , @RequestParam("price")int price, @RequestParam("bedrooms")int bedrooms , @RequestParam("bathrooms")int bathrooms ) {
-			model.addAttribute("Properties", ps.allApartments());
+		public String filter(Model model, @RequestParam("state")String state , @RequestParam("price")int price, @RequestParam("bedrooms")int bedrooms , @RequestParam("bathrooms")int bathrooms ) {
+			model.addAttribute("Options", ps.filteredApartments(state,  price, bedrooms , bathrooms));
 			return "properties.jsp";
 		}
 	@RequestMapping(value="/signup", method=RequestMethod.POST)

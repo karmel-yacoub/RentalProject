@@ -150,13 +150,22 @@ a.socialIcon:hover,
                 <form:form method="POST" action="/addapp" modelAttribute="Apartment" class="box" enctype="multipart/form-data">
                     <h1>Register</h1>
                 	 <form:input type="hidden" path="host" value="${user.getId() }"/>
-                     <form:input type="text" path="buildingName" placeholder="buildingName" />
-                     <form:input type="text" path="address" placeholder="address" />
-                      <form:input type="text" path="price" placeholder="price" /> 
-                      <form:input type="number" path="bedroomnum" placeholder="bedroomnum" /> 
-                      <form:input type="number" path="bathroomnum" placeholder="bathroomnum" />
+                     <form:input type="text" path="buildingName" placeholder="Building Name" />
+                     <form:input type="text" path="address" placeholder="Address" />
+                      <form:input type="text" path="price" placeholder="Price" /> 
+                      <form:input type="number" path="bedroomnum" placeholder="Number of bedrooms" /> 
+                      <form:input type="number" path="bathroomnum" placeholder="Number of bathrooms" />
+                      
+                      
                        <input type="file" name="Image" placeholder="image" >
-                  
+                  		<form:label path="state">State</form:label>
+				        <form:errors path="state"/>
+				        <form:select path="state">
+				        <c:forEach var="state" items="${States}">
+							<form:option value="${state.id}" label="${state.id}"/>
+        				</c:forEach>
+				        
+				       </form:select>
   
                       
                        <input class="submit"type="submit" value="Add Property"/>
