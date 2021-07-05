@@ -12,9 +12,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>our project</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="css/fontawesome.all.css">
+  <link rel="stylesheet" href="/css/fontawesome.all.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="css/adminlte.css">
+  <link rel="stylesheet" href="/css/adminlte.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -75,19 +75,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/properties" class="nav-link">
+                <a href="/admin/apps" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proporties</p>
                 </a>
               </li>
             </ul>
           </li>
-         <li class="nav-item">
-                <a href="/admin/requests" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Agents Requests</p>
-                </a>
-              </li>
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

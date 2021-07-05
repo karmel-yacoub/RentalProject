@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.aspectj.weaver.loadtime.Agent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -170,5 +171,35 @@ public class projectController {
 			model.addAttribute("x",x);
 			model.addAttribute("y",y);
 			return "adminHome.jsp";
+	 }
+	 @RequestMapping("/admin/agents")
+	 public String adminagent(Model model,HttpSession session) {
+		 Long id=(Long)session.getAttribute("user.id");
+			if (id == null ) {
+				return "redirect:/login";
+			}
+			User user=ps.findUserById(id);
+			if(user.getRole().getId() != 1) {
+				return "redirect:/";
+			}
+			model.addAttribute("user",user);
+			List <User> agents=ps.allAgents();
+			model.addAttribute("agents",agents);
+			return "adminagents.jsp";
+	 }
+	 @RequestMapping("/admin/apps")
+	 public String adminapp(Model model,HttpSession session) {
+		 Long id=(Long)session.getAttribute("user.id");
+			if (id == null ) {
+				return "redirect:/login";
+			}
+			User user=ps.findUserById(id);
+			if(user.getRole().getId() != 1) {
+				return "redirect:/";
+			}
+			model.addAttribute("user",user);
+			List <Apartment> apps=ps.allApartments();
+			model.addAttribute("apps",apps);
+			return "adminprop.jsp";
 	 }
 }

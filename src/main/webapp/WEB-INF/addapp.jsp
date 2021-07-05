@@ -153,7 +153,9 @@ a.socialIcon:hover,
                      <form:input type="text" path="buildingName" placeholder="buildingName" />
                      <form:input type="text" path="address" placeholder="address" />
                       <form:input type="text" path="price" placeholder="price" /> 
+                      <label style="color:white;" for="bedroomnum">Bedroom Number</label>
                       <form:input type="number" path="bedroomnum" placeholder="bedroomnum" /> 
+                      <label style="color:white;" for="bedroomnum">Bathroom Number</label>
                       <form:input type="number" path="bathroomnum" placeholder="bathroomnum" />
                        <input type="file" name="Image" placeholder="image" >
                   
