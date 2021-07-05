@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.HTML;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
 import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.services.projectservice;
@@ -34,8 +36,11 @@ public class projectController {
 	}
 	@RequestMapping("/")
 	public String home(HttpSession session,Model model) {
-		
-		User user=ps.findUserById((Long)session.getAttribute("user.id"));
+		Long id=(Long)session.getAttribute("user.id");
+		if (id == null) {
+			return "home.jsp";
+		}
+		User user=ps.findUserById(id);
 		model.addAttribute("user",user);
 		model.addAttribute("States", ps.allStates());
 		return "home.jsp";
@@ -97,14 +102,10 @@ public class projectController {
 		}
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException {
-	        // if result has errors, return the registration page (don't worry about validations just now)
-	        // else, save the user in the database, save the user id in session, and redirect them to the /home route
-			System.out.println(user.getPassword()+user.getPasswordConfirmation());
 	    	if(user.getPasswordConfirmation().equals(user.getPassword())) {
 	    		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	            user.setImage(fileName);
 	            User savedUser=ps.registerUser(user);
-	            System.out.println(user.getImage());
 	            String uploadDir = "user-photos/" + savedUser.getId();
 	            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	            session.setAttribute("user.id", user.getId());
@@ -127,4 +128,28 @@ public class projectController {
 	    		return "redirect:/login";
 	    	}
 	    }
+	 @RequestMapping("/addapp")
+	 public String addapp(@ModelAttribute ("Apartment") Apartment Apartment,Model model,HttpSession session) {
+		 User user=ps.findUserById((Long)session.getAttribute("user.id"));
+		 model.addAttribute("user",user);
+		 return "addapp.jsp";
+		 
+	 }
+	 @RequestMapping(value="/addapp",method=RequestMethod.POST)
+	  public String addapp(@Valid @ModelAttribute("Apartment") Apartment Apartment, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException {
+		 
+		 String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+		 Apartment.setImage(fileName);
+		 ps.createapp(Apartment);
+         User savedUser=ps.findUserById((Long)session.getAttribute("user.id"));
+         String uploadDir = "user-photos/" + savedUser.getId();
+         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+		 return "redirect:/";
+		 
+	 }
+	 @RequestMapping(value="/logout")
+	 public String logout(HttpSession session) {
+		  session.invalidate();
+		  return "redirect:/";
+	 }
 }

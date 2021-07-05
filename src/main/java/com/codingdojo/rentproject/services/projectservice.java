@@ -124,10 +124,10 @@ public List<Apartment> filteredApartments(int state, int price, int bedrooms , i
 		return AR.priceAndStateAndBedroomsAndbathrooms(state,0, price, bedrooms, bathrooms);}
 	else return allApartments();
 }
-public List<Apartment> filteredApartments2(int state, int price, int bedrooms , int bathrooms){
-	List<Apartment> x = allApartments();
-	
+
+
+
+public void createapp(Apartment app) {
+	AR.save(app);
 }
-
-
 }
