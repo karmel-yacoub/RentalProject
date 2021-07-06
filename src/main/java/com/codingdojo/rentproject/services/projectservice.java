@@ -99,30 +99,51 @@ public User userById(long id) {
 public List<State> allStates(){
 	return SR.findAll();
 }
-public List<Apartment> filteredApartments(int state, int price, int bedrooms , int bathrooms){
-	if (state != 0 && price == 0 && bedrooms == 0 && bathrooms == 0) {
+public List<Apartment> filteredApartments(String state, int price, int bedrooms , int bathrooms){
+	System.out.println("in");
+	if (!state.equals("all") && price == 0 && bedrooms == 0 && bathrooms == 0) {
+		System.out.println("state");
 		return AR.state(state);}
-	else if (state == 0 && price != 0 && bedrooms == 0 && bathrooms == 0) {
+	else if (!state.equals("all") && price != 0 && bedrooms == 0 && bathrooms == 0) {
+		System.out.println("in2");
 		return AR.price(0, price);}
-	else if (state == 0 && price == 0 && bedrooms != 0 && bathrooms == 0) {
+	else if (!state.equals("all") && price == 0 && bedrooms != 0 && bathrooms == 0) {
+		System.out.println("in3");
 		return AR.bedrooms(bedrooms);}
-	else if (state == 0 && price == 0 && bedrooms == 0 && bathrooms != 0) {
-		return AR.bathrooms(bathrooms);}		
-	else if (state != 0 && price != 0 && bedrooms == 0 && bathrooms == 0) {
+	else if (!state.equals("all") && price == 0 && bedrooms == 0 && bathrooms != 0) {
+		System.out.println("in4");
+		return AR.bathrooms(bathrooms);}
+	else if (!state.equals("all") && price == 0 && bedrooms != 0 && bathrooms != 0) {
+		System.out.println("in4");
+		return AR.bathroomsAndBedrooms(bathrooms, bedrooms);}	
+	else if (!state.equals("all") && price != 0 && bedrooms == 0 && bathrooms == 0) {
+		System.out.println("in5");
 	return AR.priceAndState(state,0, price);}
-	else if (state != 0 && price == 0 && bedrooms != 0 && bathrooms == 0) {
+	else if (!state.equals("all") && price == 0 && bedrooms != 0 && bathrooms == 0) {
+		System.out.println("in6");
 		return AR.stateAndBedrooms(state, bedrooms);}
-	else if (state != 0 && price == 0 && bedrooms == 0 && bathrooms != 0) {
+	else if (!state.equals("all") && price == 0 && bedrooms == 0 && bathrooms != 0) {
+		System.out.println("in7");
 		return AR.stateAndBathrooms(state, bathrooms);}
-	else if (state == 0 && price != 0 && bedrooms != 0 && bathrooms == 0) {
+	else if (!state.equals("all") && price == 0 && bedrooms == 0 && bathrooms != 0) {
+		System.out.println("in7");
+		return AR.stateAndBathroomsAndBedrooms(state, bathrooms, bedrooms);}
+	else if (!state.equals("all") && price != 0 && bedrooms != 0 && bathrooms == 0) {
+		System.out.println("in8");
 		return AR.priceAndBedrooms(0, price, bedrooms);}
-	else if (state == 0 && price != 0 && bedrooms == 0 && bathrooms != 0) {
+	else if (!state.equals("all") && price != 0 && bedrooms == 0 && bathrooms != 0) {
+		System.out.println("in9");
 		return AR.priceAndBathrooms(0, price, bathrooms);}
-	else if (state != 0 && price != 0 && bedrooms != 0 && bathrooms == 0) {
+	else if (!state.equals("all") && price != 0 && bedrooms != 0 && bathrooms != 0) {
+		System.out.println("in119");
+		return AR.priceAndBathroomsAndBedrooms(0, price,  bathrooms , bedrooms);}
+	else if (!state.equals("all") && price != 0 && bedrooms != 0 && bathrooms == 0) {
+		System.out.println("in9");
 		return AR.priceAndStateAndBedrooms(state,0, price, bedrooms);}
-	else if (state != 0 && price != 0 && bedrooms != 0 && bathrooms != 0) {
-		return AR.priceAndStateAndBedroomsAndbathrooms(state,0, price, bedrooms, bathrooms);}
-	else return allApartments();
+	else if (!state.equals("all") && price != 0 && bedrooms != 0 && bathrooms != 0) {
+		System.out.println("in10");
+		return AR.all(state,0, price, bedrooms, bathrooms);}
+	else System.out.println("in11"); return allApartments();
 }
 
 
