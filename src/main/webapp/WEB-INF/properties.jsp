@@ -53,7 +53,7 @@
           <div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <img src="${option.getPhotosImagePath() }" alt="" class="img-a img-fluid">
+                <img src="${option.getPhotosImagePath() }" alt="" class="img-a img-fluid" style="width:350px;height:350px;">
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
@@ -99,7 +99,8 @@
           </div>
           </c:forEach>
         </div>
-        <div class="row">
+        
+          <div class="row">
           <div class="col-sm-12">
             <nav class="pagination-a">
               <ul class="pagination justify-content-end">
@@ -127,6 +128,7 @@
           </div>
         </div>
       </div>
+      
     </section><!-- End Property Grid Single-->
 
   </main><!-- End #main -->
