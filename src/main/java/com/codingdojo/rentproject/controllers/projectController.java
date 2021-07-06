@@ -37,10 +37,12 @@ public class projectController {
 	public String home(HttpSession session,Model model) {
 		Long id=(Long)session.getAttribute("user.id");
 		if (id == null) {
+			model.addAttribute("Agents", ps.allAgents());
 			return "home.jsp";
 		}
 		User user=ps.findUserById(id);
 		model.addAttribute("user",user);
+		model.addAttribute("Agents", ps.allAgents());
 		
 		return "home.jsp";
 	}
