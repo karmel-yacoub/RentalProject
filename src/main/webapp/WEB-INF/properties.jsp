@@ -53,7 +53,7 @@
           <div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <img src="${option.getPhotosImagePath() }" alt="" class="img-a img-fluid">
+                <img src="${option.getPhotosImagePath() }" alt="" class="img-a img-fluid" style="width:350px;height:350px;">
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">

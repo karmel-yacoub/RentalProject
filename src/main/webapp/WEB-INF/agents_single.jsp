@@ -131,6 +131,7 @@
                 </form>
               </div>
             </div>
+            <c:if test="${Agent.getHostedapartments() != null }">
             <c:forEach var="option" items="${Agent.getHostedapartments()}">
 				<div class="col-md-4">
             <div class="card-box-a card-shadow">
@@ -180,6 +181,7 @@
             </div>
           </div>
         	</c:forEach>
+        	</c:if>
             <div class="col-md-4">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
