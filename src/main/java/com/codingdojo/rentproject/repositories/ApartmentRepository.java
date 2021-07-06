@@ -13,7 +13,7 @@ public interface ApartmentRepository extends  CrudRepository<Apartment,Long>{
 	List <Apartment> findAll();
 	 @Query(value = "SELECT * FROM project.apartments WHERE price BETWEEN :startAt AND :endAt" , nativeQuery=true)
 	 List<Apartment> price(@Param("startAt") int startAt, @Param("endAt") int endAt);
-	 @Query(value = "SELECT * FROM apartments join states as s on apartments.state_id=states.id WHERE where s.name = :state" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM apartments join states as s on apartments.state_id=states.id WHERE buildingName = :state" , nativeQuery=true)
 	 List<Apartment> state(@Param("state") String state);
 	 
 	 @Query(value = "SELECT * FROM project.apartments WHERE bedroomnum = :bedrooms" , nativeQuery=true)

@@ -30,8 +30,7 @@
 		<section class="agents-grid grid">
 			<div class="container">
 				<div class="row">
-				<c:forEach var="agent" items="${Agents}">
-					
+				<c:forEach var="agent" items="${Agents}">					
 					<div class="col-md-4">
                         <div class="card-box-d">
                             <div class="card-img-d">

@@ -73,7 +73,7 @@
                 <c:forEach var="state" items="${States}">
 				<option value = "${state.name}">${state.name}</option>
         		</c:forEach>
-                <option >Alabama</option>
+                <option value = "Hello" >Alabama</option>
                 <option>Arizona</option>
                 <option>California</option>
                 <option>Colorado</option>
