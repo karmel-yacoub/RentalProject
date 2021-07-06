@@ -134,7 +134,25 @@ a.socialIcon:hover,
     color: #fff;
     transition: all 0.8s;
     transition: all 0.8s
-}</style>
+}
+
+select {
+ 
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto !important;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    background-color: #191919;
+    }
+</style>
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" rel="stylesheet">
  <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
@@ -167,11 +185,26 @@ a.socialIcon:hover,
                 	 <form:input type="hidden" path="host" value="${user.getId() }"/>
                      <form:input type="text" path="buildingName" placeholder="Building Name" />
                      <form:input type="text" path="address" placeholder="Address" />
-                      <form:input type="text" path="price" placeholder="Price" />                                 
-                      <label style="color:white;" for="bedroomnum">Bedroom Number</label>
-                      <form:input  path="bedroomnum" placeholder="bedroomnum" /> 
-                      <label style="color:white;" for="bedroomnum">Bathroom Number</label>
-                      <form:input type="number" path="bathroomnum" placeholder="bathroomnum" />
+                      <form:input type="text" path="price" placeholder="Price" />
+                      <form:input type="text" path="area" placeholder="Area" />                                 
+                                                       
+                      <form:select path="bedroomnum">
+						<form:option value="0" label="Number of bedrooms"/>
+				         <form:option value="1" label="1"/>
+				         <form:option value="2" label="2"/>
+				         <form:option value="3" label="3"/>
+				         <form:option value="4" label="4"/>
+				         <form:option value="5" label="5"/>			        
+				       </form:select>
+				       <form:select path="bathroomnum">
+						<form:option value="0" label="Number of bathrooms"/>
+				         <form:option value="1" label="1"/>
+				         <form:option value="2" label="2"/>
+				         <form:option value="3" label="3"/>
+				         <form:option value="4" label="4"/>
+				         <form:option value="5" label="5"/>			        
+				       </form:select>                          
+                      
                        <input type="file" name="Image" placeholder="image" >
                   		
 				        <form:errors path="state"/>

@@ -136,7 +136,11 @@ public class projectController {
 	    }
 	 @RequestMapping("/addapp")
 	 public String addapp(@ModelAttribute ("Apartment") Apartment Apartment,Model model,HttpSession session) {
-		 User user=ps.findUserById((Long)session.getAttribute("user.id"));
+		 Long id = (Long)session.getAttribute("user.id");
+		 User user=ps.findUserById(id);
+		 if (id == null || user.getRole().getId() != 3) {
+			 return "redirect:/";
+		 }		 
 		 model.addAttribute("user",user);
 		 return "addapp.jsp";
 		 
