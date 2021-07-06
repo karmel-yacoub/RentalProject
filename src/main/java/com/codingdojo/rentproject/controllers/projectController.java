@@ -202,4 +202,8 @@ public class projectController {
 			model.addAttribute("apps",apps);
 			return "adminprop.jsp";
 	 }
+	 @RequestMapping("/test")
+	 public String test() {
+		 return "test.jsp";
+	 }
 }
