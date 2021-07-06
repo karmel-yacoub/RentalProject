@@ -113,8 +113,8 @@
             <div class="form-group">
 
               <label for="price">Max Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option value = "all">Unlimite</option>
+              <select name = "price" class="form-control form-control-lg form-control-a" id="price">
+                <option value = "0">Unlimite</option>
                 <option value ="50000">$50,000</option>
                 <option value ="1000000">$100,000</option>
                 <option value ="1500000">$150,000</option>

@@ -41,7 +41,7 @@
                                     <div class="card-title-d align-self-center">
                                         <h3 class="title-d">
                                             <a href="/agentsGridone/${agent.id}" class="link-two"><br>
-                                                ${agent.username }
+                                                ${agent.username}
                                             </a>
                                         </h3>
                                     </div>

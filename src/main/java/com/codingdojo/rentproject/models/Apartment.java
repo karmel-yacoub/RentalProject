@@ -124,8 +124,6 @@ public class Apartment {
 		this.price = price;
 	}
 
-
-
 	public int getBedroomnum() {
 		return bedroomnum;
 	}
