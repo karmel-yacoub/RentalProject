@@ -215,5 +215,6 @@ public class Apartment {
 	public void setState(State state) {
 		this.state = state;
 	}
+
 	
 }

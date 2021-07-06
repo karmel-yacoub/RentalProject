@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>EstateAgency Bootstrap Template - Index</title>
+  <title>Java Project</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -22,7 +22,7 @@
   <link href="/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="/vendor/owl.carousel/owl.carousel.min.css" rel="stylesheet">
+ 
 
   <!-- Template Main CSS File -->
   <link href="/css/style.css" rel="stylesheet">
@@ -33,6 +33,22 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script>
+	console.log("lol");
+  fetch("https://restcountries.eu/rest/v2/all")
+  .then(res => res.json())
+  .then(data => initialize(data))
+  .catch(err => console.log("Error:", err));
+
+ 	 function initialize(countriesData) {
+    countries = countriesData;
+    let options = "";
+     for(let i=0; i<countries.length; i++) {
+      options += "<option value="+countries[i].alpha3Code+">"+countries[i].name+"</option>";
+     }
+	  document.getElementById("city").innerHTML= options;
+ 	 }
+	</script>
 </head>
 
 <body>
@@ -54,31 +70,21 @@
               <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
             </div>
           </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="Type">Type</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option value = "all">All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
-              </select>
-            </div>
-          </div>
+     
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="city">State</label>
               <select name = "state" class="form-control form-control-lg form-control-a" id="city">
-                <option value ="all">All City</option>
+                <option value ="all">All States</option>
                 <c:forEach var="state" items="${States}">
-				<option value = "${state.id}">${state.name}</option>
-				
+				<option value = "${state.name}">${state.name}</option>
         		</c:forEach>
                 <option >Alabama</option>
                 <option>Arizona</option>
                 <option>California</option>
                 <option>Colorado</option>
               </select>
+
             </div>
           </div>
           <div class="col-md-6 mb-2">
@@ -96,18 +102,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="garages">Garages</label>
-              <select name = "garages" class="form-control form-control-lg form-control-a" id="garages">
-                <option value ="0">Any</option>
-                <option value ="1">01</option>
-                <option value ="2">02</option>
-                <option value ="3">03</option>
-                <option value ="4">04</option>
-              </select>
-            </div>
-          </div>
+          
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="bathrooms">Bathrooms</label>
@@ -122,7 +117,8 @@
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="price">Min Price</label>
+
+              <label for="price">Max Price</label>
               <select class="form-control form-control-lg form-control-a" id="price">
                 <option value = "all">Unlimite</option>
                 <option value ="50000">$50,000</option>
@@ -148,7 +144,7 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="/">Estate<span class="color-b">Agency</span></a>
+      <a class="navbar-brand text-brand" href="/">Home4 <span class="color-b">You</span></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
       </button>
