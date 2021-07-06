@@ -139,7 +139,22 @@ a.socialIcon:hover,
  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" rel="stylesheet">
  <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
- 
+   <script>
+
+  fetch("https://restcountries.eu/rest/v2/all")
+  .then(res => res.json())
+  .then(data => initialize(data))
+  .catch(err => console.log("Error:", err));
+
+ 	 function initialize(countriesData) {
+    countries = countriesData;
+    let options = "";
+     for(let i=0; i<countries.length; i++) {
+      options += "<option value="+countries[i].alpha3Code+">"+countries[i].name+"</option>";
+     }
+	  document.getElementById("city").innerHTML= options;
+ 	 }
+	</script>
 </head>
 <body>
 <div class="container">
@@ -158,12 +173,12 @@ a.socialIcon:hover,
                       <label style="color:white;" for="bedroomnum">Bathroom Number</label>
                       <form:input type="number" path="bathroomnum" placeholder="bathroomnum" />
                        <input type="file" name="Image" placeholder="image" >
-                  		<form:label path="state">State</form:label>
+                  		
 				        <form:errors path="state"/>
-				        <form:select path="state">
+				        <form:select path="state" id="city">
 				        <c:forEach var="state" items="${States}">
-							<form:option value="${state.id}" label="${state.id}"/>
-        				</c:forEach>				        
+							<option value = "${state.name}">${state.name}</option>
+			        		</c:forEach>				        
 				       </form:select>                      
                        <input class="submit"type="submit" value="Add Property"/>
                     <div class="col-md-12">

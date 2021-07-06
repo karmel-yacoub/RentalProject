@@ -75,6 +75,13 @@ public class User {
 	         
 	        return "/user-photos/" + id + "/" + image;
 	    }
+		@ManyToMany(fetch = FetchType.LAZY)
+		@JoinTable(
+		        name = "rates_app", 
+		        joinColumns = @JoinColumn(name = "user_id"), 
+		        inverseJoinColumns = @JoinColumn(name = "apartment_id")
+		    )
+		private List<Apartment> rated_apps;
 	
 //	public Role getRole() {
 //		return role;
@@ -207,6 +214,14 @@ public class User {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public List<Apartment> getRated_apps() {
+		return rated_apps;
+	}
+
+	public void setRated_apps(List<Apartment> rated_apps) {
+		this.rated_apps = rated_apps;
 	}
 
 }
