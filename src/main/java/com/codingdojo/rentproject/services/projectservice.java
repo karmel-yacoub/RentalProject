@@ -130,4 +130,10 @@ public List<Apartment> filteredApartments(int state, int price, int bedrooms , i
 public void createapp(Apartment app) {
 	AR.save(app);
 }
+public void deleteprop(Long id) {
+	AR.deleteById(id);
+}
+public void deleteAgent(Long id) {
+	UR.deleteById(id);
+}
 }

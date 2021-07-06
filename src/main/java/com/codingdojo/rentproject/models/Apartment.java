@@ -199,5 +199,21 @@ public class Apartment {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
 	
 }

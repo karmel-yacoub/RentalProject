@@ -202,4 +202,21 @@ public class projectController {
 			model.addAttribute("apps",apps);
 			return "adminprop.jsp";
 	 }
+	 @RequestMapping("/adminprop")
+	 public String show(Model model) {
+		List <Apartment> apartments=ps.allApartments();
+		model.addAttribute("apartments",apartments);
+		return "adminprop.jsp";
+ }
+	 @RequestMapping(value="/adminprop/delete/{id}")
+	 public String destroy(@PathVariable("id")Long id) {
+		ps.deleteprop(id);
+	 	return"redirect:/adminprop";
+	 }
+	 @RequestMapping(value="/adminagent/delete/{id}")
+	 public String deleteagent(@PathVariable("id")Long id) {
+		ps.deleteAgent(id);
+	 	return"redirect:/admin/agents";
+	 }
+	 
 }
