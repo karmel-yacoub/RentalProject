@@ -99,7 +99,8 @@
           </div>
           </c:forEach>
         </div>
-        <div class="row">
+        
+          <div class="row">
           <div class="col-sm-12">
             <nav class="pagination-a">
               <ul class="pagination justify-content-end">
@@ -127,6 +128,7 @@
           </div>
         </div>
       </div>
+      
     </section><!-- End Property Grid Single-->
 
   </main><!-- End #main -->

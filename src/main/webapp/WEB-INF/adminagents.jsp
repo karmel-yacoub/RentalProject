@@ -26,7 +26,11 @@
       <td><c:out value="${agent.getUsername() }"></c:out></td>
       <td><c:out value="${agent.getEmail() }"></c:out></td>
       <td><c:out value="${agent.getPhonenumber() }"></c:out></td>
-      <td> <p> <a class="btn btn-danger" href="">Delete</a>  </p></td>
+      <!--  <td> <p> <a class="btn btn-danger" href="">Delete</a>  </p></td> -->
+      <td> <form action="/adminagent/delete/${agent.getId()}" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input class="btn btn-danger" type="submit" value="Delete">
+</form></td>
     </tr>
 </c:forEach>
   </tbody>
