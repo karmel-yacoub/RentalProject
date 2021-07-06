@@ -150,7 +150,7 @@ a.socialIcon:hover,
     countries = countriesData;
     let options = "";
      for(let i=0; i<countries.length; i++) {
-      options += "<option value="+countries[i].alpha3Code+">"+countries[i].name+"</option>";
+      options += "<option value="+countries[i].name+">"+countries[i].name+"</option>";
      }
 	  document.getElementById("city").innerHTML= options;
  	 }
@@ -176,9 +176,7 @@ a.socialIcon:hover,
                   		
 				        <form:errors path="state"/>
 				        <form:select path="state" id="city">
-				        <c:forEach var="state" items="${States}">
-							<option value = "${state.name}">${state.name}</option>
-			        		</c:forEach>				        
+				        			        
 				       </form:select>                      
                        <input class="submit"type="submit" value="Add Property"/>
                     <div class="col-md-12">

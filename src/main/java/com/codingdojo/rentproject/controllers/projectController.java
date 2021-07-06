@@ -230,7 +230,7 @@ public class projectController {
 			}
 			
 		ps.deleteprop(id);
-	 	return"redirect:/adminprop";
+	 	return"redirect:/admin/prop";
 	 }
 	 @RequestMapping(value="/adminagent/delete/{id}")
 	 public String deleteagent(@PathVariable("id")Long id,HttpSession session) {

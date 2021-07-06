@@ -75,7 +75,9 @@
               <label for="city">State</label>
               <select name = "state" class="form-control form-control-lg form-control-a" id="city">
                 
-          
+                <c:forEach var="state" items="${States}">
+				<option value = "${state.name}">${state.name}</option>
+        		</c:forEach>
   
               </select>
 
@@ -113,7 +115,7 @@
             <div class="form-group">
 
               <label for="price">Max Price</label>
-              <select name = "price" class="form-control form-control-lg form-control-a" id="price">
+              <select name="price" class="form-control form-control-lg form-control-a" id="price">
                 <option value = "0">Unlimite</option>
                 <option value ="50000">$50,000</option>
                 <option value ="1000000">$100,000</option>

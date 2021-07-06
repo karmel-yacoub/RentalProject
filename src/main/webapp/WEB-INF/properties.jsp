@@ -59,7 +59,7 @@
                 <div class="card-overlay-a-content">
                   <div class="card-header-a">
                     <h2 class="card-title-a">
-                      <a href="#">${option.address}
+                      <a href="/single/${option.id }">${option.address}
                         <br /> ${option.buildingName}</a>
                     </h2>
                   </div>
@@ -67,7 +67,7 @@
                     <div class="price-box d-flex">
                       <span class="price-a">rent | $ ${option.price} </span>
                     </div>
-                    <a href="property-single.html" class="link-a">Click here to view
+                    <a href="/single/${option.id }" class="link-a">Click here to view
                       <span class="ion-ios-arrow-forward"></span>
                     </a>
                   </div>
