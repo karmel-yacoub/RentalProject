@@ -167,7 +167,7 @@ public class projectController {
          User savedUser=ps.findUserById((Long)session.getAttribute("user.id"));
          String uploadDir = "user-photos/" + savedUser.getId();
          FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-		 return "redirect:/";
+		 return "redirect:/props";
 		 
 	 }
 	 @RequestMapping(value="/logout")

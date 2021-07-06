@@ -135,7 +135,24 @@ a.socialIcon:hover,
     color: #fff;
     transition: all 0.8s;
     transition: all 0.8s
-}</style>
+}
+#role {
+ 
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto !important;
+    text-align: center;
+    border: 2px solid #3498db;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    background-color: #191919;
+    }
+
+</style>
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" rel="stylesheet">
  <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
@@ -151,18 +168,18 @@ a.socialIcon:hover,
                 <form:form method="POST" action="/signup" modelAttribute="user" class="box" enctype="multipart/form-data">
                     <h1>Register</h1>
                 
-                     <form:input type="text" path="username" placeholder="username" />
-                     <form:input type="email" path="email" placeholder="email" />
+                     <form:input type="text" path="username" placeholder="Full Name" />
+                     <form:input type="email" path="email" placeholder="Email" />
                      <form:errors path="email"/>
-                      <form:input type="password" path="password" placeholder="password" /> 
+                      <form:input type="password" path="password" placeholder="Password" /> 
                       <form:errors path="password"/>
-                      <form:input type="password" path="passwordConfirmation" placeholder="passwordconfirmation" /> 
-                      <form:input type="text" path="phonenumber" placeholder="phonenumber" />
+                      <form:input type="password" path="passwordConfirmation" placeholder="Password confirmation" /> 
+                      <form:input type="text" path="phonenumber" placeholder="Phone number" />
                        <input type="file" name="Image" placeholder="image" >
                      <form:select class="form-control" path="role" >
-				        <c:forEach items="${x }" var="g">
-						  <option value="${g.getId() }"><c:out value="${g.role }"></c:out></option>
-						  </c:forEach>
+						  <option value="2">User</option>
+ 						  <option value="3">Agent</option>
+						  
 				        </form:select>
                  	  <a href="/login">Already have an account , Log in</a>
                       
