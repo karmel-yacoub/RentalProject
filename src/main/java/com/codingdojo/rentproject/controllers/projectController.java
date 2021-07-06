@@ -1,6 +1,7 @@
 package com.codingdojo.rentproject.controllers;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
@@ -281,6 +282,12 @@ public class projectController {
 		 }
 		 else
 			 return "redirect:/";
+	 }
+	 @RequestMapping(value="/sendemail",method=RequestMethod.POST)
+	 public String sendEmail(@RequestParam("name") String name,@RequestParam("email") String email,@RequestParam("comment") String comment,@RequestParam("agent") String agent) throws UnsupportedEncodingException, MessagingException {
+		 System.out.println(agent);
+		 ps.sendEmail(name, email, comment, agent);
+		 return "redirect:/";
 	 }
 	 
 

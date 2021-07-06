@@ -57,7 +57,7 @@ public void sendVerificationEmail(User user, String siteURL)
         throws MessagingException, UnsupportedEncodingException {
     String toAddress = user.getEmail();
     String fromAddress = "home.us.usz@gmail.com";
-    String senderName = "Your company name";
+    String senderName = "Home4 U";
     String subject = "Please verify your registration";
     String content = "Dear [[name]],<br>"
             + "Please click the link below to verify your registration:<br>"
@@ -81,6 +81,30 @@ public void sendVerificationEmail(User user, String siteURL)
      
     mailsender.send(message);
      
+}
+public void sendEmail(String user,String email,String text,String agentemail) throws UnsupportedEncodingException, MessagingException {
+	 	String toAddress = agentemail;
+	    String fromAddress = "home.us.usz@gmail.com";
+	    String senderName = "Home4u";
+	    String subject = "Please verify your registration";
+	    String content = "Dear [[name]],<br>"
+	            + user+" wants to contact with you and sent you this message:<br>"
+	            +text+ "you can contanct him on this " +email;
+	     
+	    MimeMessage message = mailsender.createMimeMessage();
+	    MimeMessageHelper helper = new MimeMessageHelper(message);
+	     
+	    helper.setFrom(fromAddress, senderName);
+	    helper.setTo(toAddress);
+	    helper.setSubject(subject);
+	     
+	    content = content.replace("[[name]]", "Mr.");
+	     
+	   
+	     
+	    helper.setText(content, true);
+	     
+	    mailsender.send(message);
 }
 
 // find user by email

@@ -111,7 +111,8 @@
 			</div>
 			
 			<div class="row">
-			<c:forEach var="agent"  begin="1" end= "3" items="${Agents}">
+			
+			<c:forEach var="agent"   end= "3" items="${Agents}">
 				
 					<div class="col-md-4">
 						<div class="card-box-d">
