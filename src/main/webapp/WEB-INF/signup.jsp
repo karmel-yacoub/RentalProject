@@ -153,7 +153,9 @@ a.socialIcon:hover,
                 
                      <form:input type="text" path="username" placeholder="username" />
                      <form:input type="email" path="email" placeholder="email" />
+                     <form:errors path="email"/>
                       <form:input type="password" path="password" placeholder="password" /> 
+                      <form:errors path="password"/>
                       <form:input type="password" path="passwordConfirmation" placeholder="passwordconfirmation" /> 
                       <form:input type="text" path="phonenumber" placeholder="phonenumber" />
                        <input type="file" name="Image" placeholder="image" >

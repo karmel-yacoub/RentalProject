@@ -37,14 +37,14 @@ public class User {
 	private Long id;
 	@NotNull
 	private String username;
-	@Column(name = "verification_code", length = 64)
+//	@Column(name = "verification_code", length = 64)
     private String verificationCode;    
 	private boolean enabled;
 	@Email(message = " • Email is in an invalid format. proper format: name@host.com")
 	@Column(unique=true)
 	private String email;
 	@NotBlank(message = "• Password field must not be blank")
-	@Size(min = 8, message = "• Password must be 5 characters or more")
+	@Size(min = 5, message = "• Password must be 5 characters or more")
 	private String password;
 	@Transient
 	private String passwordConfirmation;

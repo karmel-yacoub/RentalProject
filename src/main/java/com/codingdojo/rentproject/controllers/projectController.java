@@ -60,7 +60,7 @@ public class projectController {
 	
 	
 	@RequestMapping("/prop")
-	public String prop(Model model,HttpSession session,HttpServletRequest request) {
+	public String prop(Model model,HttpSession session, HttpServletRequest request) {
 		model.addAttribute("Options", ps.allApartments());
 		String siteURL=getSiteURL(request);
 		System.out.println(siteURL);
@@ -96,7 +96,7 @@ public class projectController {
 		return "contact.jsp";
 	}
 	@RequestMapping("/signup")
-	public String Register(Model model,@ModelAttribute("user") User User) {
+	public String Register(Model model, @ModelAttribute("user") User User) {
 		List<Role> x=ps.allRoles();
 		model.addAttribute("x",x);
 		return "signup.jsp";
@@ -109,6 +109,10 @@ public class projectController {
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	    public String registerUser(HttpServletRequest request,@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException, MessagingException {
 	    	if(user.getPasswordConfirmation().equals(user.getPassword())) {
+	    		if (result.hasErrors()) {
+	    			System.out.println("Wrong");
+	    			return "redirect:/signup";
+	    		}
 	    		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	            user.setImage(fileName);
 	            User savedUser=ps.registerUser(user);
@@ -123,7 +127,7 @@ public class projectController {
 	            return "redirect:/";
 	        	}
 	    	else
-	    		return "redirect:/signup";
+	    		return "signup.jsp";
 	    }
 	 @RequestMapping(value="/login", method=RequestMethod.POST)
 	    public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) {

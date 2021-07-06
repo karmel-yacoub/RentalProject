@@ -54,7 +54,7 @@
           <div class="copyright-footer">
             <p class="copyright color-text-a">
               &copy; Copyright
-              <span class="color-a">EstateAgency</span> All Rights Reserved.
+              <span class="color-a">Home4 <span style= "color:#2eca6a;">You</span> </span> All Rights Reserved.
             </p>
           </div>
           
