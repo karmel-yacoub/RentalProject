@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6" style="display:flex;justify-content:space-evenly;">
-       		<a href="/adminprop" style="text-align: center;width:250px !important;height:250px !important;"type="button" class="btn btn-danger">Appartments:<c:out value="${y }"></c:out></a>
+       		<a href="/admin/prop" style="text-align: center;width:250px !important;height:250px !important;"type="button" class="btn btn-danger">Appartments:<c:out value="${y }"></c:out></a>
             <a href="/admin/agents" style="text-align: center;width:250px !important;height:250px !important;"type="button" class="btn btn-primary">Agents:<c:out value="${x }"></c:out></a>
           </div><!-- /.col -->
         </div><!-- /.row -->

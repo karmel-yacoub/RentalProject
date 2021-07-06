@@ -1,21 +1,26 @@
 package com.codingdojo.rentproject.services;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
-
 import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.repositories.ApartmentRepository;
 import com.codingdojo.rentproject.repositories.RateREpository;
 import com.codingdojo.rentproject.repositories.RoleRepository;
-
 import com.codingdojo.rentproject.repositories.UserRepository;
+
+import net.bytebuddy.utility.RandomString;
 
 
 @Service
@@ -24,12 +29,13 @@ private final ApartmentRepository AR;
 private final RateREpository RateR;
 private final RoleRepository RoleR;
 private final UserRepository UR;
-
-public projectservice(ApartmentRepository aR, RateREpository rateR, RoleRepository roleR, UserRepository uR) {
+private JavaMailSender mailsender;
+public projectservice(ApartmentRepository aR, RateREpository rateR, RoleRepository roleR, UserRepository uR,JavaMailSender ms) {
 	AR = aR;
 	RateR = rateR;
 	RoleR = roleR;
 	UR = uR;
+	mailsender=ms;
 
 }
 public List<Role> allRoles() {
@@ -37,11 +43,44 @@ public List<Role> allRoles() {
 	return RoleR.findAll();
 }
 
+
 //register user and hash their password
 public User registerUser(User user) {
     String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
     user.setPassword(hashed);
+    user.setEnabled(false);
+    String x=RandomString.make(64);
+    user.setVerificationCode(x);
     return UR.save(user);
+}
+public void sendVerificationEmail(User user, String siteURL)
+        throws MessagingException, UnsupportedEncodingException {
+    String toAddress = user.getEmail();
+    String fromAddress = "home.us.usz@gmail.com";
+    String senderName = "Your company name";
+    String subject = "Please verify your registration";
+    String content = "Dear [[name]],<br>"
+            + "Please click the link below to verify your registration:<br>"
+            + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
+            + "Thank you,<br>"
+            + "Your company name.";
+     
+    MimeMessage message = mailsender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message);
+     
+    helper.setFrom(fromAddress, senderName);
+    helper.setTo(toAddress);
+    helper.setSubject(subject);
+     
+    content = content.replace("[[name]]", user.getUsername());
+    String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
+     
+    content = content.replace("[[URL]]", verifyURL);
+     
+    helper.setText(content, true);
+     
+    mailsender.send(message);
+     
 }
 
 // find user by email
@@ -154,5 +193,8 @@ public void deleteprop(Long id) {
 }
 public void deleteAgent(Long id) {
 	UR.deleteById(id);
+}
+public void usersave(User user) {
+	UR.save(user);
 }
 }

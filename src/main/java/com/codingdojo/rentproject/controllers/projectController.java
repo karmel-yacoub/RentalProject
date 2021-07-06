@@ -2,10 +2,10 @@ package com.codingdojo.rentproject.controllers;
 
 import java.io.IOException;
 import java.util.List;
-
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.aspectj.weaver.loadtime.Agent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
 import com.codingdojo.rentproject.models.User;
@@ -38,10 +37,12 @@ public class projectController {
 	public String home(HttpSession session,Model model) {
 		Long id=(Long)session.getAttribute("user.id");
 		if (id == null) {
+			model.addAttribute("Agents", ps.allAgents());
 			return "home.jsp";
 		}
 		User user=ps.findUserById(id);
 		model.addAttribute("user",user);
+		model.addAttribute("Agents", ps.allAgents());
 		
 		return "home.jsp";
 	}
@@ -59,9 +60,10 @@ public class projectController {
 	
 	
 	@RequestMapping("/prop")
-	public String prop(Model model,HttpSession session) {
+	public String prop(Model model,HttpSession session,HttpServletRequest request) {
 		model.addAttribute("Options", ps.allApartments());
-		
+		String siteURL=getSiteURL(request);
+		System.out.println(siteURL);
 		return "properties.jsp";
 	}
 	
@@ -105,7 +107,7 @@ public class projectController {
 			return "properties.jsp";
 		}
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException {
+	    public String registerUser(HttpServletRequest request,@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException, MessagingException {
 	    	if(user.getPasswordConfirmation().equals(user.getPassword())) {
 	    		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	            user.setImage(fileName);
@@ -114,6 +116,10 @@ public class projectController {
 	            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	            session.setAttribute("user.id", user.getId());
 	            session.setAttribute("role", user.getRole().getId());
+	            session.setAttribute("en",user.isEnabled());
+	            String siteURL=getSiteURL(request);
+	            ps.sendVerificationEmail(savedUser,siteURL);
+	            System.out.println(siteURL);
 	            return "redirect:/";
 	        	}
 	    	else
@@ -127,6 +133,7 @@ public class projectController {
 	    		User user=ps.findByEmail(email);
 	    		session.setAttribute("user.id", user.getId());
 	    		session.setAttribute("role", user.getRole().getId());
+	    		session.setAttribute("en",user.isEnabled());
 	    		return "redirect:/";
 	    		
 	    	}
@@ -254,7 +261,24 @@ public class projectController {
 	 	return"redirect:/admin/agents";
 	 }
 	 
-
+	 private String getSiteURL(HttpServletRequest request) {
+	        String siteURL = request.getRequestURL().toString();
+	        return siteURL.replace(request.getServletPath(), "");
+	    } 
+	 @RequestMapping("/verify")
+	 public String Verify(@RequestParam(value="code") String code,HttpSession session) {
+		 System.out.println(code);
+		 Long zz=(Long)session.getAttribute("user.id");
+		 User user=ps.findUserById(zz);
+		 if(user.getVerificationCode().equals(code) ) {
+			 user.setEnabled(true);
+			 ps.usersave(user);
+			 return "redirect:/prop";
+		 }
+		 else
+			 return "redirect:/";
+	 }
+	 
 
 
 }
