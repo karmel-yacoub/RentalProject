@@ -110,10 +110,8 @@ public class projectController {
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	    public String registerUser(HttpServletRequest request,@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, @RequestParam("Image") MultipartFile multipartFile) throws IOException, MessagingException {
 	    	if(user.getPasswordConfirmation().equals(user.getPassword())) {
-	    		if (result.hasErrors()) {
-	    			System.out.println("Wrong");
-	    			return "redirect:/signup";
-	    		}
+	    		
+	    		
 	    		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	            user.setImage(fileName);
 	            User savedUser=ps.registerUser(user);
@@ -127,9 +125,12 @@ public class projectController {
 	            System.out.println(siteURL);
 	            return "redirect:/";
 	        	}
-	    	else
-	    		return "signup.jsp";
-	    }
+	    	else return "redirect:/prop";
+    		}
+	    	
+    	
+	    	
+	    
 	 @RequestMapping(value="/login", method=RequestMethod.POST)
 	    public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) {
 	        // if the user is authenticated, save their user id in session

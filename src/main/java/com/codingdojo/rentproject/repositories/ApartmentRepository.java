@@ -25,16 +25,16 @@ public interface ApartmentRepository extends  CrudRepository<Apartment,Long>{
 	 @Query(value = "SELECT * FROM project.apartments WHERE bathroomnum = :bathrooms AND bedroomnum = :bedrooms" , nativeQuery=true)
 	 List<Apartment> bathroomsAndBedrooms(@Param("bathrooms") int bathrooms, @Param("bedrooms") int bedrooms);
 	 
-	 @Query(value = "SELECT * FROM project.apartments join states on apartments.state_id=states.id where states.name = :state AND price BETWEEN :startAt AND :endAt" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM project.apartments  where state = :state AND price BETWEEN :startAt AND :endAt" , nativeQuery=true)
 	 List<Apartment> priceAndState(@Param("state")String state, @Param("startAt") int startAt, @Param("endAt") int endAt);
 	 
-	 @Query(value = "SELECT * FROM project.apartments join states on apartments.state_id=states.id WHERE bedroomnum = :bedrooms AND states.name = :state" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM project.apartments j WHERE bedroomnum = :bedrooms AND states = :state" , nativeQuery=true)
 	 List<Apartment> stateAndBedrooms(@Param("state") String state,@Param("bedrooms") int bedrooms);
 	 
-	 @Query(value = "SELECT * FROM project.apartments join states on apartments.state_id=states.id WHERE bathroomnum = :Bathrooms AND  states.name = :state" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM project.apartments  WHERE bathroomnum = :Bathrooms AND  state = :state" , nativeQuery=true)
 	 List<Apartment> stateAndBathrooms(@Param("state") String state,@Param("Bathrooms") int Bathrooms);
 	 
-	 @Query(value = "SELECT * FROM project.apartments join states on apartments.state_id=states.id WHERE bathroomnum = :Bathrooms AND states.name = :state AND bedroomnum = :bedrooms" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM project.apartments  WHERE bathroomnum = :Bathrooms AND state = :state AND bedroomnum = :bedrooms" , nativeQuery=true)
 	 List<Apartment> stateAndBathroomsAndBedrooms(@Param("state") String state,@Param("Bathrooms") int Bathrooms, @Param("bedrooms") int bedrooms);
 	 
 	 @Query(value = "SELECT * FROM project.apartments WHERE bedroomnum = :bedrooms AND price BETWEEN :startAt AND :endAt" , nativeQuery=true)
@@ -46,10 +46,10 @@ public interface ApartmentRepository extends  CrudRepository<Apartment,Long>{
 	 @Query(value = "SELECT * FROM project.apartments WHERE bathroomnum = :bathrooms  AND bedroomnum = :bedrooms AND price BETWEEN :startAt AND :endAt" , nativeQuery=true)
 	 List<Apartment> priceAndBathroomsAndBedrooms( @Param("startAt") int startAt, @Param("endAt") int endAt, @Param("bathrooms")int bathrooms, @Param("bedrooms") int bedrooms);
 	 
-	 @Query(value = "SELECT * FROM project.apartments join states on apartments.state_id=states.id WHERE states.name = :state AND price BETWEEN :startAt AND :endAt AND bedroomnum = :bedrooms" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM project.apartments  WHERE state = :state AND price BETWEEN :startAt AND :endAt AND bedroomnum = :bedrooms" , nativeQuery=true)
 	 List<Apartment> priceAndStateAndBedrooms(@Param("state")String state, @Param("startAt") int startAt, @Param("endAt") int endAt,@Param("bedrooms") int bedrooms);
 	 
-	 @Query(value = "SELECT * FROM project.apartments  join states on apartments.state_id=states.id WHERE states.name = :state AND price BETWEEN :startAt AND :endAt AND bedroomnum = :bedrooms AND bathroomnum = :bathrooms" , nativeQuery=true)
+	 @Query(value = "SELECT * FROM project.apartments   WHERE state.name = :state AND price BETWEEN :startAt AND :endAt AND bedroomnum = :bedrooms AND bathroomnum = :bathrooms" , nativeQuery=true)
 	 List<Apartment> all(@Param("state")String state, @Param("startAt") int startAt, @Param("endAt") int endAt,@Param("bedrooms") int bedrooms, @Param("bathrooms") int bathrooms);
 }
 

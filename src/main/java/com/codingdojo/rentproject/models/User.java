@@ -37,7 +37,7 @@ public class User {
 	private Long id;
 	@NotNull
 	private String username;
-//	@Column(name = "verification_code", length = 64)
+	@Column(name = "verification_code")
     private String verificationCode;    
 	private boolean enabled;
 	@Email(message = " • Email is in an invalid format. proper format: name@host.com")
