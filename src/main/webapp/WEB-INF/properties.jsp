@@ -34,18 +34,6 @@
     <section class="property-grid grid">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12">
-            <div class="grid-option">
-              <form>
-                <select class="custom-select">
-                  <option selected>All</option>
-                  <option value="1">New to Old</option>
-                  <option value="2">For Rent</option>
-                  <option value="3">For Sale</option>
-                </select>
-              </form>
-            </div>
-          </div>
           <c:forEach var="option" items="${Options}">
 
         
@@ -87,10 +75,7 @@
                         <h4 class="card-info-title">Baths</h4>
                         <span>${option.bathroomnum}</span>
                       </li>
-                      <li>
-                        <h4 class="card-info-title">Garages</h4>
-                        <span>1</span>
-                      </li>
+            
                     </ul>
                   </div>
                 </div>

@@ -123,13 +123,13 @@
 				<div class="col-md-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <img src="img/property-1.jpg" alt="" class="img-a img-fluid">
+                <img src="${option.getPhotosImagePath() }" alt="" class="img-a img-fluid" style="width 30rem;height:30rem;">
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
                   <div class="card-header-a">
                     <h2 class="card-title-a">
-                      <a href="#">${option.address}
+                      <a href="/single/${option.getId() }">${option.address}
                         <br /> ${option.buildingName}</a>
                     </h2>
                   </div>
@@ -157,10 +157,7 @@
                         <h4 class="card-info-title">Baths</h4>
                         <span>${option.bathroomnum}</span>
                       </li>
-                      <li>
-                        <h4 class="card-info-title">Garages</h4>
-                        <span>1</span>
-                      </li>
+                   
                     </ul>
                   </div>
                 </div>

@@ -87,10 +87,7 @@
                         <strong>Baths:</strong>
                         <span>2</span>
                       </li>
-                      <li class="d-flex justify-content-between">
-                        <strong>Garage:</strong>
-                        <span>1</span>
-                      </li>
+                 
                     </ul>
                   </div>
                 </div>
