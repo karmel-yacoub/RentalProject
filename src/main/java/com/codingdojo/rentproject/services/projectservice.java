@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.codingdojo.rentproject.models.Apartment;
 import com.codingdojo.rentproject.models.Role;
-import com.codingdojo.rentproject.models.State;
+
 import com.codingdojo.rentproject.models.User;
 import com.codingdojo.rentproject.repositories.ApartmentRepository;
 import com.codingdojo.rentproject.repositories.RateREpository;
 import com.codingdojo.rentproject.repositories.RoleRepository;
-import com.codingdojo.rentproject.repositories.StateRepository;
+
 import com.codingdojo.rentproject.repositories.UserRepository;
 
 
@@ -24,13 +24,13 @@ private final ApartmentRepository AR;
 private final RateREpository RateR;
 private final RoleRepository RoleR;
 private final UserRepository UR;
-private final StateRepository SR;
-public projectservice(ApartmentRepository aR, RateREpository rateR, RoleRepository roleR, UserRepository uR, StateRepository sR) {
+
+public projectservice(ApartmentRepository aR, RateREpository rateR, RoleRepository roleR, UserRepository uR) {
 	AR = aR;
 	RateR = rateR;
 	RoleR = roleR;
 	UR = uR;
-	SR = sR;
+
 }
 public List<Role> allRoles() {
 	
@@ -96,9 +96,7 @@ public List<User> allAgents(){
 public User userById(long id) {
 	return UR.findById(id).get();
 }
-public List<State> allStates(){
-	return SR.findAll();
-}
+
 public List<Apartment> filteredApartments(String state, int price, int bedrooms , int bathrooms){
 	System.out.println("in");
 	if (!state.equals("all") && price == 0 && bedrooms == 0 && bathrooms == 0) {

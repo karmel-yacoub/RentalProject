@@ -45,7 +45,7 @@ public class Apartment {
 	    public String getPhotosImagePath() {
 	        if (image == null || id == null) return null;
 	         
-	        return "/user-photos/" + id + "/" + image;
+	        return "/user-photos/" + host.getId() + "/" + image;
 	    }
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
@@ -73,9 +73,8 @@ public class Apartment {
 	private List<Rate> rated_apps;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="state_id")
-    private State state;
+
+    private String state;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -208,11 +207,11 @@ public class Apartment {
 		this.area = area;
 	}
 
-	public State getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(State state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 

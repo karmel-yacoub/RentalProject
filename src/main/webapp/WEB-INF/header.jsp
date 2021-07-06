@@ -34,7 +34,6 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <script>
-	console.log("lol");
   fetch("https://restcountries.eu/rest/v2/all")
   .then(res => res.json())
   .then(data => initialize(data))
@@ -42,9 +41,9 @@
 
  	 function initialize(countriesData) {
     countries = countriesData;
-    let options = "";
+    let options = "<option value ='all'>All States</option>";
      for(let i=0; i<countries.length; i++) {
-      options += "<option value="+countries[i].alpha3Code+">"+countries[i].name+"</option>";
+      options += "<option value="+countries[i].name+">"+countries[i].name+"</option>";
      }
 	  document.getElementById("city").innerHTML= options;
  	 }
@@ -75,14 +74,9 @@
             <div class="form-group">
               <label for="city">State</label>
               <select name = "state" class="form-control form-control-lg form-control-a" id="city">
-                <option value ="all">All States</option>
-                <c:forEach var="state" items="${States}">
-				<option value = "${state.name}">${state.name}</option>
-        		</c:forEach>
-                <option value = "Hello" >Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
+                
+          
+  
               </select>
 
             </div>

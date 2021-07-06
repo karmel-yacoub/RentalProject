@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="agent-avatar-box">
-                  <img src="img/agent-7.jpg" alt="" class="agent-avatar img-fluid">
+                  <img src="${Agent.getPhotosImagePath() }" alt="" class="agent-avatar img-fluid">
                 </div>
               </div>
               <div class="col-md-5 section-md-t3">
@@ -125,7 +125,7 @@
                   <div class="card-header-a">
                     <h2 class="card-title-a">
                       <a href="#">${option.address}
-                        <br /> ${option.name}</a>
+                        <br /> ${option.buildingName}</a>
                     </h2>
                   </div>
                   <div class="card-body-a">

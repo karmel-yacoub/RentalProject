@@ -42,7 +42,7 @@ public class projectController {
 		}
 		User user=ps.findUserById(id);
 		model.addAttribute("user",user);
-		model.addAttribute("States", ps.allStates());
+		
 		return "home.jsp";
 	}
 	
@@ -52,7 +52,7 @@ public class projectController {
 	@RequestMapping("/single/{id}")
 	public String single(Model model, @PathVariable("id") Long id,HttpSession session) {
 		model.addAttribute("apartment", ps.apartmentById(id));
-		model.addAttribute("States", ps.allStates());
+		
 		return "single.jsp";
 	}
 	
@@ -61,7 +61,7 @@ public class projectController {
 	@RequestMapping("/prop")
 	public String prop(Model model,HttpSession session) {
 		model.addAttribute("Options", ps.allApartments());
-		model.addAttribute("States", ps.allStates());
+		
 		return "properties.jsp";
 	}
 	
@@ -72,7 +72,7 @@ public class projectController {
 	@RequestMapping("/agentsGrid")
 	public String agentsGrid(Model model,HttpSession session) {
 		model.addAttribute("Agents", ps.allAgents());
-		model.addAttribute("States", ps.allStates());
+
 		return "agents-grid.jsp";
 	}
 	
@@ -81,7 +81,7 @@ public class projectController {
 	@RequestMapping("/agentsGridone/{id}")
 	public String agentsone(Model model , @PathVariable("id") Long id,HttpSession session) {
 		model.addAttribute("Agent", ps.userById(id));
-		model.addAttribute("States", ps.allStates());
+	
 		return "agents_single.jsp";
 	}
 	
