@@ -37,16 +37,17 @@ public class User {
 	private Long id;
 	@NotNull
 	private String username;
-	@NotNull
+	@Column(name = "verification_code", length = 64)
+    private String verificationCode;    
+	private boolean enabled;
 	@Email(message = " • Email is in an invalid format. proper format: name@host.com")
+	@Column(unique=true)
 	private String email;
-	@NotNull
 	@NotBlank(message = "• Password field must not be blank")
 	@Size(min = 8, message = "• Password must be 5 characters or more")
 	private String password;
 	@Transient
 	private String passwordConfirmation;
-	@NotNull
 	@Size(min=9)
 	private String phonenumber;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -222,6 +223,22 @@ public class User {
 
 	public void setRated_apps(List<Apartment> rated_apps) {
 		this.rated_apps = rated_apps;
+	}
+
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }

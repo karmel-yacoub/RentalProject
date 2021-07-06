@@ -159,7 +159,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
            </li>
-           <c:if test="${sessionScope.role eq 3}">
+           <c:if test="${sessionScope.role eq 3 and sessionScore.en eq true}">
           <li class="nav-item">
             <a class="nav-link" href="/addapp">Add Property</a>
           </li>
