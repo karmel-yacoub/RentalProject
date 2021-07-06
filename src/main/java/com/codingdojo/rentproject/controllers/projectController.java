@@ -203,27 +203,50 @@ public class projectController {
 			return "adminprop.jsp";
 	 }
 
-	 @RequestMapping("/adminprop")
-	 public String show(Model model) {
+	 @RequestMapping("/admin/prop")
+	 public String show(Model model,HttpSession session) {
+		 Long id=(Long)session.getAttribute("user.id");
+			if (id == null ) {
+				return "redirect:/login";
+			}
+			User user=ps.findUserById(id);
+			if(user.getRole().getId() != 1) {
+				return "redirect:/";
+			}
+			model.addAttribute("user",user);
 		List <Apartment> apartments=ps.allApartments();
 		model.addAttribute("apartments",apartments);
 		return "adminprop.jsp";
  }
 	 @RequestMapping(value="/adminprop/delete/{id}")
-	 public String destroy(@PathVariable("id")Long id) {
+	 public String destroy(@PathVariable("id")Long id,HttpSession session) {
+		 Long zz=(Long)session.getAttribute("user.id");
+			if (zz == null ) {
+				return "redirect:/login";
+			}
+			User user=ps.findUserById(zz);
+			if(user.getRole().getId() != 1) {
+				return "redirect:/";
+			}
+			
 		ps.deleteprop(id);
 	 	return"redirect:/adminprop";
 	 }
 	 @RequestMapping(value="/adminagent/delete/{id}")
-	 public String deleteagent(@PathVariable("id")Long id) {
+	 public String deleteagent(@PathVariable("id")Long id,HttpSession session) {
+		 Long zz=(Long)session.getAttribute("user.id");
+			if (zz == null ) {
+				return "redirect:/login";
+			}
+			User user=ps.findUserById(zz);
+			if(user.getRole().getId() != 1) {
+				return "redirect:/";
+			}
 		ps.deleteAgent(id);
 	 	return"redirect:/admin/agents";
 	 }
 	 
 
-	 @RequestMapping("/test")
-	 public String test() {
-		 return "test.jsp";
-	 }
+
 
 }
