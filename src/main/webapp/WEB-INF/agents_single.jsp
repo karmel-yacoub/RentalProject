@@ -39,7 +39,11 @@
             <div class="row"> 
               <div class="col-md-6">
                 <div class="agent-avatar-box">
+<<<<<<< HEAD
                   <img src="${agent.getPhotosImagePath() }" alt="" class="agent-avatar img-fluid">
+=======
+                  <img src="${Agent.getPhotosImagePath() }" alt="" class="agent-avatar img-fluid">
+>>>>>>> 938f31372d1513f8588d845af7e2251b10340e3e
                 </div>
               </div>
               <div class="col-md-5 section-md-t3">
@@ -126,7 +130,7 @@
                   <div class="card-header-a">
                     <h2 class="card-title-a">
                       <a href="#">${option.address}
-                        <br /> ${option.name}</a>
+                        <br /> ${option.buildingName}</a>
                     </h2>
                   </div>
                   <div class="card-body-a">
