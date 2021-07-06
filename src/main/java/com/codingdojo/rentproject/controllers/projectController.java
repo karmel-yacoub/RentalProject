@@ -81,7 +81,11 @@ public class projectController {
 	@RequestMapping("/agentsGridone/{id}")
 	public String agentsone(Model model , @PathVariable("id") Long id,HttpSession session) {
 		model.addAttribute("Agent", ps.userById(id));
+
+		model.addAttribute("prop", ps.allApartments());
+
 	
+
 		return "agents_single.jsp";
 	}
 	
