@@ -36,10 +36,10 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <div class="row">
+            <div class="row"> 
               <div class="col-md-6">
                 <div class="agent-avatar-box">
-                  <img src="img/agent-7.jpg" alt="" class="agent-avatar img-fluid">
+                  <img src="${agent.getPhotosImagePath() }" alt="" class="agent-avatar img-fluid">
                 </div>
               </div>
               <div class="col-md-5 section-md-t3">
@@ -107,9 +107,10 @@
               </div>
             </div>
           </div>
+   
           <div class="col-md-12 section-t8">
             <div class="title-box-d">
-              <h3 class="title-d">My Properties (6)</h3>
+              <h3 class="title-d">My Properties (<c:out value="${ prop.size() }"></c:out> )</h3>
             </div>
           </div>
           <div class="row property-grid grid">
